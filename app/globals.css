@@ -1,26 +1,194 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #1A1D23;
+  --panel: #23262D;
+  --panel2: #2A2E36;
+  --border: #3C464B;
+
+  --text: #F2F2F2;
+  --text-dim: #A0A0A0;
+  --text-faint: #6B6B6B;
+
+  --info: #40FED1;
+  --up: #40FED1;
+  --warn: #E36163;
+  --down: #E36163;
+  --mag: #8E5DEC;
+
+  --r: 4px;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-background: var(--bg);
+  --color-foreground: var(--text);
+  --color-primary: var(--text);
+  --color-muted: var(--text-faint);
+  --color-panel: var(--panel);
+  --color-panel2: var(--panel2);
+  --color-border: var(--border);
+  --color-text: var(--text);
+  --color-text-dim: var(--text-dim);
+  --color-text-faint: var(--text-faint);
+  --color-info: var(--info);
+  --color-up: var(--up);
+  --color-warn: var(--warn);
+  --color-warning: var(--warn);
+  --color-action: var(--info);
+  --color-down: var(--down);
+  --color-mag: var(--mag);
+  --color-terminal-text: var(--text);
+  --color-terminal-label: var(--text-dim);
+  --color-terminal-border: var(--border);
+  --color-terminal-cyan: var(--info);
+  --color-terminal-amber: var(--warn);
+  --color-terminal-emerald: var(--up);
+  --color-terminal-purple: var(--mag);
+  --color-terminal-purple-light: var(--mag);
+  --color-terminal-gray: var(--panel2);
+  --color-terminal-black: var(--bg);
+  --font-sans: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --font-mono: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html, body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.data, table, .mono {
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  font-variant-numeric: tabular-nums lining-nums;
+  font-feature-settings: "tnum" 1, "lnum" 1;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+}
+
+.kbd-focus:focus {
+  outline: 2px solid color-mix(in srgb, var(--info) 70%, transparent);
+  outline-offset: 2px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.table th, .table td {
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+.table th {
+  color: var(--text-dim);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  font-size: 11px;
+}
+
+.row:hover {
+  background: color-mix(in srgb, var(--panel2) 70%, transparent);
+}
+
+.up { color: var(--up); }
+.down { color: var(--down); }
+.warn { color: var(--warn); }
+.info { color: var(--info); }
+
+/* Legacy class mappings for existing components */
+.data-mono {
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  font-size: 0.75rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.data-table th {
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-dim);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  font-size: 11px;
+  background: var(--panel);
+}
+
+.data-table td {
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.75rem;
+}
+
+.data-table tbody tr:hover {
+  background: color-mix(in srgb, var(--panel2) 70%, transparent);
+}
+
+.terminal-panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+}
+
+.terminal-header {
+  background: var(--panel2);
+  border-bottom: 1px solid var(--border);
+  padding: 6px 8px;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--text-dim);
+}
+
+.data-value {
+  color: var(--info);
+}
+
+.risk-value {
+  color: var(--warn);
+}
+
+.verified-value {
+  color: var(--up);
+}
+
+.timestamp {
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  font-size: 11px;
+  color: var(--text-dim);
+  letter-spacing: .06em;
+  font-variant-numeric: tabular-nums;
+}
+
+.verified-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--up);
+  border: 1px solid var(--up);
+  padding: 2px 6px;
+  border-radius: var(--r);
 }
