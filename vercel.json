@@ -1,16 +1,1 @@
-{
-  "crons": [
-    {
-      "path": "/api/cron/auto-ghost",
-      "schedule": "0 2 * * *"
-    },
-    {
-      "path": "/api/cron/update-scores",
-      "schedule": "0 3 * * *"
-    },
-    {
-      "path": "/api/cron/ghost-jobs",
-      "schedule": "0 4 * * *"
-    }
-  ]
-}
+{}
