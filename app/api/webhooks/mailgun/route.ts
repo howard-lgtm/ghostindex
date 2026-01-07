@@ -27,6 +27,12 @@ export async function POST(request: Request) {
     const recipient = formData.get('recipient') as string;
     const sender = formData.get('sender') as string;
     
+    // Check if this is a verification reply (sent to verify+CODE@mg.getghostindex.com)
+    const verificationMatch = recipient?.match(/verify\+(\w+)@/);
+    if (verificationMatch) {
+      return handleVerificationReply(verificationMatch[1], sender, formData);
+    }
+    
     // Parse company domain from original sender (in forwarded email body)
     const companyDomain = extractCompanyDomain(bodyPlain || bodyHtml);
     const applicationDate = extractApplicationDate(bodyPlain || bodyHtml);
@@ -208,4 +214,115 @@ function extractCompanyName(domain: string): string {
   // Simple domain to company name conversion
   const name = domain.split('.')[0];
   return name.charAt(0).toUpperCase() + name.slice(1);
+}
+
+// Handle verification email replies
+async function handleVerificationReply(
+  verificationCode: string,
+  senderEmail: string,
+  formData: FormData
+): Promise<Response> {
+  try {
+    const supabase = await createClient();
+    
+    // Find report by verification code
+    const { data: report, error: reportError } = await supabase
+      .from('reports')
+      .select('*, companies(name)')
+      .eq('verification_code', verificationCode)
+      .single();
+    
+    if (reportError || !report) {
+      console.error('Report not found for verification code:', verificationCode);
+      return new Response('Report not found', { status: 404 });
+    }
+    
+    // Verify sender email matches report owner
+    const { data: users } = await supabase.auth.admin.listUsers();
+    const reportOwner = users?.users.find(u => u.id === report.user_id);
+    
+    if (!reportOwner || reportOwner.email !== senderEmail) {
+      console.error('Email mismatch:', senderEmail, 'vs', reportOwner?.email);
+      return new Response('Unauthorized', { status: 401 });
+    }
+    
+    // Check for attachments (screenshots)
+    const attachmentCount = parseInt(formData.get('attachment-count') as string || '0');
+    let proofImageUrl = null;
+    
+    // TODO: Handle attachment upload to Supabase Storage
+    // For now, we'll just mark as verified if they replied
+    
+    // Update report to verified
+    const { error: updateError } = await supabase
+      .from('reports')
+      .update({
+        email_verified: true,
+        is_verified: true,
+        status: 'approved',
+      })
+      .eq('id', report.id);
+    
+    if (updateError) {
+      console.error('Error updating report:', updateError);
+      return new Response('Error verifying report', { status: 500 });
+    }
+    
+    // Log verification activity
+    await supabase.from('activity_logs').insert({
+      report_id: report.id,
+      activity_type: 'confirmation_received',
+      activity_date: new Date().toISOString(),
+      email_source: senderEmail,
+    });
+    
+    // Store email verification record
+    await supabase.from('email_verifications').insert({
+      user_id: report.user_id,
+      company_domain: (report.companies as any)?.name || 'unknown',
+      email_from: formData.get('from') as string,
+      email_subject: formData.get('subject') as string,
+      email_body: formData.get('body-plain') as string,
+      verification_status: 'verified',
+      report_id: report.id,
+      verification_code: verificationCode,
+      raw_email_json: {
+        from: formData.get('from'),
+        subject: formData.get('subject'),
+        body: formData.get('body-plain'),
+        timestamp: formData.get('timestamp'),
+        attachments: attachmentCount,
+      },
+    });
+    
+    // Send confirmation email to user
+    try {
+      const { sendEmail } = await import('@/lib/mailgun');
+      const { getVerificationConfirmationTemplate } = await import('@/lib/email-templates');
+      
+      const { subject, html, text } = getVerificationConfirmationTemplate({
+        userName: reportOwner.user_metadata?.full_name || reportOwner.email?.split('@')[0] || 'there',
+        companyName: (report.companies as any)?.name || 'the company',
+        jobTitle: report.job_title || 'the position',
+      });
+      
+      await sendEmail({
+        to: reportOwner.email!,
+        subject,
+        html,
+        text,
+      });
+      
+      console.log('Verification confirmation email sent to:', reportOwner.email);
+    } catch (emailError) {
+      console.error('Failed to send confirmation email:', emailError);
+      // Don't fail the verification if email fails
+    }
+    
+    console.log('Report verified successfully:', report.id);
+    return new Response('Report verified successfully', { status: 200 });
+  } catch (error) {
+    console.error('Error handling verification reply:', error);
+    return new Response('Internal server error', { status: 500 });
+  }
 }

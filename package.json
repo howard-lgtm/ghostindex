@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "seed:companies": "tsx scripts/seed-companies.ts",
-    "test:connection": "tsx scripts/test-connection.ts"
+    "test:connection": "tsx scripts/test-connection.ts",
+    "check:mailgun": "tsx tools/check-mailgun-status.ts"
   },
   "dependencies": {
     "@supabase/ssr": "^0.8.0",

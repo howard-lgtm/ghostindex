@@ -11,6 +11,7 @@ export default function SubmitPage() {
   const [companyName, setCompanyName] = useState("");
   const [companyDomain, setCompanyDomain] = useState("");
   const [jobTitle, setJobTitle] = useState("");
+  const [applicationDate, setApplicationDate] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -63,21 +64,39 @@ export default function SubmitPage() {
         companyId = newCompany.id;
       }
 
-      const { error: reportError } = await supabase.from("reports").insert({
-        user_id: user.id,
-        company_id: companyId,
-        status: "pending",
-        is_verified: false,
-        job_title: jobTitle || null,
-      });
+      const { data: newReport, error: reportError } = await supabase
+        .from("reports")
+        .insert({
+          user_id: user.id,
+          company_id: companyId,
+          status: "pending",
+          is_verified: false,
+          job_title: jobTitle || null,
+          application_date: applicationDate || null,
+        })
+        .select()
+        .single();
 
       if (reportError) throw reportError;
 
-      const emailHash = await hashEmail(user.email || "");
-      await supabase.from("verification_queue").insert({
-        email_hash: emailHash,
-        status: "pending",
-      });
+      // Send verification email
+      try {
+        await fetch('/api/send-verification-email', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            reportId: newReport.id,
+            userEmail: user.email,
+            userName: user.user_metadata?.full_name || user.email?.split('@')[0] || 'there',
+            companyName,
+            jobTitle: jobTitle || 'a position',
+            verificationCode: newReport.verification_code,
+          }),
+        });
+      } catch (emailError) {
+        console.error('Failed to send verification email:', emailError);
+        // Don't fail the submission if email fails
+      }
 
       setSuccess(true);
       setTimeout(() => {
@@ -117,12 +136,15 @@ export default function SubmitPage() {
             <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-8">
               <CheckCircle className="mx-auto h-16 w-16 text-green-600 dark:text-green-400" />
               <h2 className="mt-4 text-2xl font-bold text-green-900 dark:text-green-100">
-                Report Submitted!
+                Report Published!
               </h2>
               <p className="mt-2 text-green-700 dark:text-green-300">
-                Thank you for helping make hiring more transparent. Your report is pending verification.
+                Your report is now live on GhostIndex. Check your email for verification instructions.
               </p>
               <p className="mt-4 text-sm text-green-600 dark:text-green-400">
+                Simply reply to the email with your application confirmation to verify your report.
+              </p>
+              <p className="mt-2 text-sm text-green-600 dark:text-green-400">
                 Redirecting to dashboard...
               </p>
             </div>
@@ -254,9 +276,29 @@ export default function SubmitPage() {
                 />
               </div>
 
-              <div className="bg-slate-50 dark:bg-slate-900 rounded-lg p-4">
-                <p className="text-sm text-slate-600 dark:text-slate-400">
-                  <strong>Note:</strong> Your report will be pending until verified. We'll send a verification email to confirm your submission.
+              <div>
+                <label htmlFor="applicationDate" className="block text-sm font-medium text-primary mb-2">
+                  Application Date (Optional)
+                </label>
+                <input
+                  id="applicationDate"
+                  type="date"
+                  value={applicationDate}
+                  onChange={(e) => setApplicationDate(e.target.value)}
+                  max={new Date().toISOString().split('T')[0]}
+                  className="w-full px-4 py-2 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-action focus:border-transparent bg-white dark:bg-slate-900 text-foreground"
+                />
+                <p className="mt-1 text-xs text-slate-500">
+                  When did you apply? Helps with auto-ghost detection after 30 days.
+                </p>
+              </div>
+
+              <div className="bg-indigo-50 dark:bg-indigo-900/20 border border-indigo-200 dark:border-indigo-800 rounded-lg p-4">
+                <p className="text-sm text-indigo-900 dark:text-indigo-100 font-medium mb-2">
+                  ✅ Your report will be published immediately!
+                </p>
+                <p className="text-sm text-indigo-700 dark:text-indigo-300">
+                  We'll send you a verification email. Simply reply with your application confirmation to verify your report and enable auto-ghost detection.
                 </p>
               </div>
 

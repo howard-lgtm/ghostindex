@@ -16,28 +16,16 @@ export default function VerificationInstructions() {
             Verify Your Reports
           </h3>
           <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">
-            Forward your application confirmation emails to verify your reports and enable auto-ghost detection.
+            Check your email for verification instructions. Simply reply with your application confirmation to verify your reports.
           </p>
           
-          <div className="rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-4 mb-4">
-            <div className="flex items-center gap-2 mb-2">
-              <span className="text-xs font-medium text-slate-500 dark:text-slate-400">
-                VERIFICATION EMAIL ADDRESS
-              </span>
-            </div>
-            <div className="flex items-center gap-2">
-              <code className="text-lg font-mono font-semibold text-action">
-                verify@getghostindex.com
-              </code>
-              <button
-                onClick={() => {
-                  navigator.clipboard.writeText('verify@getghostindex.com');
-                }}
-                className="text-xs px-2 py-1 rounded bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 text-slate-600 dark:text-slate-300"
-              >
-                Copy
-              </button>
-            </div>
+          <div className="rounded-lg bg-indigo-50 dark:bg-indigo-900/20 border border-indigo-200 dark:border-indigo-800 p-4 mb-4">
+            <p className="text-sm text-indigo-900 dark:text-indigo-100 font-medium mb-1">
+              ✅ Reports are published instantly!
+            </p>
+            <p className="text-xs text-indigo-700 dark:text-indigo-300">
+              We send you a verification email after each submission. Just reply to verify.
+            </p>
           </div>
 
           <div className="space-y-3">
@@ -49,10 +37,10 @@ export default function VerificationInstructions() {
               </div>
               <div>
                 <p className="text-sm font-medium text-primary">
-                  Find your application confirmation email
+                  Submit your report
                 </p>
                 <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-                  Look for emails from company recruiters confirming they received your application
+                  Your report goes live immediately - no waiting!
                 </p>
               </div>
             </div>
@@ -65,10 +53,10 @@ export default function VerificationInstructions() {
               </div>
               <div>
                 <p className="text-sm font-medium text-primary">
-                  Forward to verify@getghostindex.com
+                  Check your email
                 </p>
                 <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-                  We'll automatically parse the email and link it to your report
+                  We'll send you a verification email with a unique reply address
                 </p>
               </div>
             </div>
@@ -81,20 +69,19 @@ export default function VerificationInstructions() {
               </div>
               <div>
                 <p className="text-sm font-medium text-primary">
-                  Auto-ghost detection enabled
+                  Reply with proof
                 </p>
                 <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-                  If no response in 30 days, we'll automatically flag it as ghosted
+                  Forward your confirmation email or attach a screenshot - that's it!
                 </p>
               </div>
             </div>
           </div>
 
-          <div className="mt-4 flex items-start gap-2 rounded-lg bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 p-3">
-            <Clock className="h-4 w-4 text-amber-600 dark:text-amber-400 flex-shrink-0 mt-0.5" />
-            <p className="text-xs text-amber-800 dark:text-amber-200">
-              <strong>Note:</strong> Only forward emails from company domains (not Gmail, Yahoo, etc.). 
-              We verify the sender to prevent fake reports.
+          <div className="mt-4 flex items-start gap-2 rounded-lg bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 p-3">
+            <CheckCircle className="h-4 w-4 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5" />
+            <p className="text-xs text-green-800 dark:text-green-200">
+              <strong>Why verify?</strong> Verified reports carry more weight in Ghost Index Scores and enable automatic ghosting detection after 30 days.
             </p>
           </div>
         </div>
