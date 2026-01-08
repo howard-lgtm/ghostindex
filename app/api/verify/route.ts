@@ -145,10 +145,10 @@ export async function GET(request: Request) {
     });
 
     // Get user email for confirmation
-    const { data: userData } = await supabase.auth.admin.listUsers();
-    const user = userData?.users.find(u => u.id === report.user_id);
+    const { data: userData, error: userError } = await supabase.auth.admin.getUserById(report.user_id);
+    const user = userData?.user;
 
-    console.log('User lookup result:', { userId: report.user_id, userFound: !!user, userEmail: user?.email });
+    console.log('User lookup result:', { userId: report.user_id, userFound: !!user, userEmail: user?.email, userError });
 
     // Send confirmation email
     if (user?.email) {
