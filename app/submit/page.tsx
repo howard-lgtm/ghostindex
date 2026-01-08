@@ -3,9 +3,10 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { AlertTriangle, CheckCircle } from "lucide-react";
+import { CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { createClient } from "@/lib/supabase/client";
+import Logo from "@/components/Logo";
 
 export default function SubmitPage() {
   const [companyName, setCompanyName] = useState("");
@@ -123,9 +124,9 @@ export default function SubmitPage() {
         <nav className="border-b border-slate-200 dark:border-slate-800">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="flex h-16 items-center justify-between">
-              <Link href="/" className="flex items-center gap-2">
-                <AlertTriangle className="h-6 w-6 text-warning" />
-                <span className="text-xl font-bold text-primary">GhostIndex</span>
+              <Link href="/" className="flex items-center gap-3">
+                <Logo size={32} />
+                <span className="text-2xl font-bold gradient-text">GhostIndex</span>
               </Link>
             </div>
           </div>
@@ -160,9 +161,9 @@ export default function SubmitPage() {
         <nav className="border-b border-slate-200 dark:border-slate-800">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="flex h-16 items-center justify-between">
-              <Link href="/" className="flex items-center gap-2">
-                <AlertTriangle className="h-6 w-6 text-warning" />
-                <span className="text-xl font-bold text-primary">GhostIndex</span>
+              <Link href="/" className="flex items-center gap-3">
+                <Logo size={32} />
+                <span className="text-2xl font-bold gradient-text">GhostIndex</span>
               </Link>
             </div>
           </div>
@@ -170,7 +171,9 @@ export default function SubmitPage() {
 
         <div className="flex-1 flex items-center justify-center px-4 py-12">
           <div className="w-full max-w-md text-center">
-            <AlertTriangle className="mx-auto h-16 w-16 text-warning" />
+            <div className="mx-auto h-16 w-16 flex items-center justify-center">
+              <Logo size={64} />
+            </div>
             <h2 className="mt-4 text-2xl font-bold text-primary">Sign In Required</h2>
             <p className="mt-2 text-slate-600 dark:text-slate-400">
               You need to be signed in to submit a report
@@ -194,9 +197,9 @@ export default function SubmitPage() {
       <nav className="border-b border-slate-200 dark:border-slate-800">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
-            <Link href="/" className="flex items-center gap-2">
-              <AlertTriangle className="h-6 w-6 text-warning" />
-              <span className="text-xl font-bold text-primary">GhostIndex</span>
+            <Link href="/" className="flex items-center gap-3">
+              <Logo size={32} />
+              <span className="text-2xl font-bold gradient-text">GhostIndex</span>
             </Link>
             <div className="flex items-center gap-4">
               <Link href="/search" className="text-sm font-medium text-foreground hover:text-action">

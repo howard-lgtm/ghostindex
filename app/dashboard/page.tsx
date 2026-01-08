@@ -141,7 +141,9 @@ export default async function DashboardPage() {
           <div className="p-6">
             {!reports || reports.length === 0 ? (
               <div className="text-center py-16">
-                <AlertTriangle className="mx-auto h-16 w-16 text-text-dim" />
+                <div className="mx-auto h-16 w-16 flex items-center justify-center opacity-50">
+                  <Logo size={64} />
+                </div>
                 <h3 className="mt-6 text-xl font-semibold text-primary">No reports yet</h3>
                 <p className="mt-3 text-base text-text-dim">
                   Start by reporting a company that ghosted you

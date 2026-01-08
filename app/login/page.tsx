@@ -3,9 +3,9 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { AlertTriangle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { createClient } from "@/lib/supabase/client";
+import Logo from "@/components/Logo";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -42,9 +42,9 @@ export default function LoginPage() {
       <nav className="border-b border-slate-200 dark:border-slate-800">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
-            <Link href="/" className="flex items-center gap-2">
-              <AlertTriangle className="h-6 w-6 text-warning" />
-              <span className="text-xl font-bold text-primary">GhostIndex</span>
+            <Link href="/" className="flex items-center gap-3">
+              <Logo size={32} />
+              <span className="text-2xl font-bold gradient-text">GhostIndex</span>
             </Link>
           </div>
         </div>

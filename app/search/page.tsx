@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { AlertTriangle, Search, TrendingDown, TrendingUp } from "lucide-react";
+import { Search, TrendingDown, TrendingUp } from "lucide-react";
+import Logo from "@/components/Logo";
 import { Button } from "@/components/ui/button";
 import { createClient } from "@/lib/supabase/client";
 
@@ -70,8 +71,8 @@ export default function SearchPage() {
       <nav className="border-b border-slate-200 dark:border-slate-800">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
-            <Link href="/" className="flex items-center gap-2">
-              <AlertTriangle className="h-6 w-6 text-warning" />
+            <Link href="/" className="flex items-center gap-3">
+              <Logo size={32} />
               <span className="text-xl font-bold text-primary">GhostIndex</span>
             </Link>
             <div className="flex items-center gap-4">
@@ -207,7 +208,9 @@ export default function SearchPage() {
           <div className="text-center py-12">
             <div className="mx-auto max-w-md">
               <div className="rounded-lg bg-slate-50 dark:bg-slate-900 p-8">
-                <AlertTriangle className="mx-auto h-12 w-12 text-warning" />
+                <div className="mx-auto h-12 w-12 flex items-center justify-center">
+                  <Logo size={48} />
+                </div>
                 <h3 className="mt-4 text-lg font-medium text-primary">
                   Understanding Ghost Index Scores
                 </h3>

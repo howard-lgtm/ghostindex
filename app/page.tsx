@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { AlertTriangle, Search, Shield, TrendingUp } from "lucide-react";
+import { CheckCircle, Search, Shield, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ThemeToggle from "@/components/ThemeToggle";
 import Logo from "@/components/Logo";
@@ -78,9 +78,9 @@ export default function Home() {
                       Query verified ghost index scores (0-100). Data sourced from email-verified reports only.
                     </p>
                   </div>
-                  <div className="border-l-4 pl-6" style={{borderColor: 'var(--warn)'}}>
+                  <div className="border-l-4 pl-6" style={{borderColor: 'var(--info)'}}>
                     <div className="flex items-center gap-3 mb-4">
-                      <AlertTriangle className="h-6 w-6" style={{color: 'var(--warn)'}} />
+                      <CheckCircle className="h-6 w-6" style={{color: 'var(--info)'}} />
                       <h3 className="text-lg font-semibold" style={{color: 'var(--text)'}}>
                         Submit Reports
                       </h3>
@@ -136,8 +136,8 @@ export default function Home() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
             <div className="flex items-center gap-2">
-              <AlertTriangle className="h-4 w-4" style={{color: 'var(--warn)'}} />
-              <span className="font-semibold text-sm" style={{color: 'var(--mag)'}}>GhostIndex</span>
+              <Logo size={20} />
+              <span className="font-semibold text-sm gradient-text">GhostIndex</span>
             </div>
             <div className="flex items-center gap-4 text-xs" style={{color: 'var(--text-faint)'}}>
               <Link href="/terms" className="hover:underline">Terms</Link>
