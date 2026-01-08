@@ -1,7 +1,36 @@
 @import "tailwindcss";
 
 :root {
-  /* Dark theme (default) - Supabase-inspired with emerald/teal accents */
+  /* Light theme (default) */
+  --bg: #FFFFFF;
+  --panel: #F9FAFB;
+  --panel2: #F3F4F6;
+  --border: #E5E7EB;
+
+  --text: #111827;
+  --text-dim: #6B7280;
+  --text-faint: #9CA3AF;
+
+  --brand: #059669;
+  --brand-dark: #047857;
+  --brand-light: #10B981;
+  
+  --info: #059669;
+  --up: #059669;
+  --warn: #D97706;
+  --down: #DC2626;
+  --mag: #7C3AED;
+  
+  /* Gradient accent colors (Loveable.dev style) */
+  --gradient-from: #059669;
+  --gradient-via: #0891B2;
+  --gradient-to: #7C3AED;
+
+  --r: 8px;
+}
+
+/* Dark theme */
+[data-theme="dark"] {
   --bg: #0F1419;
   --panel: #1A1F26;
   --panel2: #232931;
@@ -22,38 +51,9 @@
   --down: #EF4444;
   --mag: #8B5CF6;
   
-  /* Gradient accent colors (Loveable.dev style) */
   --gradient-from: #3ECF8E;
   --gradient-via: #06B6D4;
   --gradient-to: #8B5CF6;
-
-  --r: 8px;
-}
-
-/* Light theme */
-[data-theme="light"] {
-  --bg: #FFFFFF;
-  --panel: #F9FAFB;
-  --panel2: #F3F4F6;
-  --border: #E5E7EB;
-
-  --text: #111827;
-  --text-dim: #6B7280;
-  --text-faint: #9CA3AF;
-
-  --brand: #059669;
-  --brand-dark: #047857;
-  --brand-light: #10B981;
-  
-  --info: #059669;
-  --up: #059669;
-  --warn: #D97706;
-  --down: #DC2626;
-  --mag: #7C3AED;
-  
-  --gradient-from: #059669;
-  --gradient-via: #0891B2;
-  --gradient-to: #7C3AED;
 }
 
 @theme inline {
@@ -99,7 +99,7 @@ html, body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Radial gradient background effect - dark theme */
+/* Radial gradient background effect - light theme (default) */
 html::before {
   content: '';
   position: fixed;
@@ -108,9 +108,9 @@ html::before {
   right: 0;
   bottom: 0;
   background: radial-gradient(circle at 50% 50%, 
-    rgba(139, 92, 246, 0.15) 0%,
-    rgba(236, 72, 153, 0.12) 35%,
-    rgba(59, 130, 246, 0.1) 70%,
+    rgba(139, 92, 246, 0.08) 0%,
+    rgba(236, 72, 153, 0.06) 35%,
+    rgba(59, 130, 246, 0.05) 70%,
     transparent 100%);
   pointer-events: none;
   z-index: 0;
@@ -118,12 +118,12 @@ html::before {
   transition: opacity 0.3s ease;
 }
 
-/* Light theme gradient - softer, more subtle */
-[data-theme="light"]::before {
+/* Dark theme gradient - more vibrant */
+[data-theme="dark"]::before {
   background: radial-gradient(circle at 50% 50%, 
-    rgba(139, 92, 246, 0.08) 0%,
-    rgba(236, 72, 153, 0.06) 35%,
-    rgba(59, 130, 246, 0.05) 70%,
+    rgba(139, 92, 246, 0.15) 0%,
+    rgba(236, 72, 153, 0.12) 35%,
+    rgba(59, 130, 246, 0.1) 70%,
     transparent 100%);
 }
 
