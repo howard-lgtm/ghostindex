@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { AlertTriangle, Search, Shield, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import ThemeToggle from "@/components/ThemeToggle";
+import Logo from "@/components/Logo";
 
 export default function Home() {
   return (
@@ -9,13 +11,14 @@ export default function Home() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
             <div className="flex items-center gap-3">
-              <AlertTriangle className="h-7 w-7" style={{color: 'var(--warn)'}} />
+              <Logo size={32} />
               <span className="text-2xl font-bold gradient-text">GhostIndex</span>
             </div>
             <div className="flex items-center gap-4">
               <Link href="/search" className="text-base font-medium hover:text-action transition-colors" style={{color: 'var(--text-dim)'}}>
                 Search Companies
               </Link>
+              <ThemeToggle />
               <Link href="/login">
                 <Button variant="outline" size="sm">
                   Sign In

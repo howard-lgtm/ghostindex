@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  /* Supabase-inspired dark theme with emerald/teal accents */
+  /* Dark theme (default) - Supabase-inspired with emerald/teal accents */
   --bg: #0F1419;
   --panel: #1A1F26;
   --panel2: #232931;
@@ -28,6 +28,32 @@
   --gradient-to: #8B5CF6;
 
   --r: 8px;
+}
+
+/* Light theme */
+[data-theme="light"] {
+  --bg: #FFFFFF;
+  --panel: #F9FAFB;
+  --panel2: #F3F4F6;
+  --border: #E5E7EB;
+
+  --text: #111827;
+  --text-dim: #6B7280;
+  --text-faint: #9CA3AF;
+
+  --brand: #059669;
+  --brand-dark: #047857;
+  --brand-light: #10B981;
+  
+  --info: #059669;
+  --up: #059669;
+  --warn: #D97706;
+  --down: #DC2626;
+  --mag: #7C3AED;
+  
+  --gradient-from: #059669;
+  --gradient-via: #0891B2;
+  --gradient-to: #7C3AED;
 }
 
 @theme inline {
@@ -70,9 +96,10 @@ html, body {
   line-height: 1.6;
   letter-spacing: -0.011em;
   position: relative;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Radial gradient background effect */
+/* Radial gradient background effect - dark theme */
 html::before {
   content: '';
   position: fixed;
@@ -87,6 +114,17 @@ html::before {
     transparent 100%);
   pointer-events: none;
   z-index: 0;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+/* Light theme gradient - softer, more subtle */
+[data-theme="light"]::before {
+  background: radial-gradient(circle at 50% 50%, 
+    rgba(139, 92, 246, 0.08) 0%,
+    rgba(236, 72, 153, 0.06) 35%,
+    rgba(59, 130, 246, 0.05) 70%,
+    transparent 100%);
 }
 
 body > * {

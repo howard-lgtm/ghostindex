@@ -4,6 +4,8 @@ import { AlertTriangle, TrendingDown, TrendingUp, Users } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import VerificationInstructions from "@/components/VerificationInstructions";
+import ThemeToggle from "@/components/ThemeToggle";
+import Logo from "@/components/Logo";
 
 export default async function DashboardPage() {
   const supabase = await createClient();
@@ -46,8 +48,8 @@ export default async function DashboardPage() {
       <nav className="border-b border-slate-200 dark:border-slate-800">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
-            <Link href="/" className="flex items-center gap-2">
-              <AlertTriangle className="h-7 w-7 text-warning" />
+            <Link href="/" className="flex items-center gap-3">
+              <Logo size={32} />
               <span className="text-2xl font-bold gradient-text">GhostIndex</span>
             </Link>
             <div className="flex items-center gap-4">
@@ -59,6 +61,7 @@ export default async function DashboardPage() {
                   Report Ghosting
                 </Button>
               </Link>
+              <ThemeToggle />
               <form action="/auth/signout" method="post">
                 <Button variant="ghost" size="sm" type="submit">
                   Sign Out
