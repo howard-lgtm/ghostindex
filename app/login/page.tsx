@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { createClient } from "@/lib/supabase/client";
 import Logo from "@/components/Logo";
+import OAuthButtons from "@/components/OAuthButtons";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -60,6 +61,17 @@ export default function LoginPage() {
           </div>
 
           <div className="rounded-lg shadow-sm p-8" style={{background: 'var(--panel)', border: '1px solid var(--border)'}}>
+            <OAuthButtons />
+
+            <div className="relative my-6">
+              <div className="absolute inset-0 flex items-center">
+                <div className="w-full border-t" style={{borderColor: 'var(--border)'}}></div>
+              </div>
+              <div className="relative flex justify-center text-sm">
+                <span className="px-2" style={{background: 'var(--panel)', color: 'var(--text-dim)'}}>Or continue with email</span>
+              </div>
+            </div>
+
             <form onSubmit={handleLogin} className="space-y-6">
               {error && (
                 <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4">
