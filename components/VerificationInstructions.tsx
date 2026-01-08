@@ -16,7 +16,7 @@ export default function VerificationInstructions() {
             Verify Your Reports
           </h3>
           <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">
-            Check your email for verification instructions. Simply reply with your application confirmation to verify your reports.
+            Check your email for verification instructions. Simply click the verification link to verify your reports.
           </p>
           
           <div className="rounded-lg bg-indigo-50 dark:bg-indigo-900/20 border border-indigo-200 dark:border-indigo-800 p-4 mb-4">
@@ -24,7 +24,7 @@ export default function VerificationInstructions() {
               ✅ Reports are published instantly!
             </p>
             <p className="text-xs text-indigo-700 dark:text-indigo-300">
-              We send you a verification email after each submission. Just reply to verify.
+              We send you a verification email after each submission. Just click to verify.
             </p>
           </div>
 
@@ -69,10 +69,10 @@ export default function VerificationInstructions() {
               </div>
               <div>
                 <p className="text-sm font-medium text-primary">
-                  Reply with proof
+                  Click to verify
                 </p>
                 <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-                  Forward your confirmation email or attach a screenshot - that's it!
+                  Click the verification button in the email - done!
                 </p>
               </div>
             </div>

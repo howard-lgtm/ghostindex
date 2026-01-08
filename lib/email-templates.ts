@@ -15,7 +15,7 @@ export function getVerificationEmailTemplate({
   verificationCode,
   reportId,
 }: VerificationEmailParams): { subject: string; html: string; text: string } {
-  const replyToEmail = `verify+${verificationCode}@mg.getghostindex.com`;
+  const verificationUrl = `https://getghostindex.com/api/verify?code=${verificationCode}`;
   
   const subject = `Verify your GhostIndex report for ${companyName}`;
   
@@ -23,12 +23,9 @@ export function getVerificationEmailTemplate({
 
 Thanks for reporting your experience with ${companyName} for the ${jobTitle} position.
 
-Your report is now live on GhostIndex! To verify your report and enable auto-ghost detection, simply reply to this email with one of the following:
+Your report is now live on GhostIndex! To verify your report and enable auto-ghost detection, click the link below:
 
-1. Forward your application confirmation email (just hit reply and forward it)
-2. Attach a screenshot of your application confirmation
-
-That's it! Just reply to this email with your proof.
+${verificationUrl}
 
 WHY VERIFY?
 - Verified reports carry more weight in Ghost Index Scores
@@ -36,8 +33,6 @@ WHY VERIFY?
 - Helps other job seekers trust the data
 
 Your report is already visible, but verified reports are marked with a ✓ badge and count more toward company scores.
-
-Reply to: ${replyToEmail}
 
 Thanks for helping make hiring more transparent!
 
@@ -86,37 +81,23 @@ View your report: https://getghostindex.com/dashboard
               <div style="background-color: #f1f5f9; border-left: 4px solid #6366f1; padding: 20px; margin: 30px 0; border-radius: 6px;">
                 <p style="margin: 0 0 10px; color: #1e293b; font-size: 16px; font-weight: 600;">✅ Your report is now live!</p>
                 <p style="margin: 0; color: #475569; font-size: 14px; line-height: 1.6;">
-                  To verify your report and enable auto-ghost detection, simply <strong>reply to this email</strong> with your proof.
+                  To verify your report and enable auto-ghost detection, click the button below.
                 </p>
               </div>
               
-              <h3 style="margin: 30px 0 15px; color: #1e293b; font-size: 18px; font-weight: 600;">How to Verify (Choose One):</h3>
-              
-              <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom: 30px;">
+              <table width="100%" cellpadding="0" cellspacing="0" style="margin: 30px 0;">
                 <tr>
-                  <td style="padding: 15px; background-color: #f8fafc; border-radius: 8px; margin-bottom: 10px;">
-                    <div style="display: flex; align-items: start;">
-                      <div style="background-color: #6366f1; color: white; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 14px; flex-shrink: 0; margin-right: 15px;">1</div>
-                      <div>
-                        <p style="margin: 0 0 5px; color: #1e293b; font-weight: 600; font-size: 15px;">Forward your confirmation email</p>
-                        <p style="margin: 0; color: #64748b; font-size: 14px;">Just hit reply and forward your application confirmation</p>
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-                <tr><td style="height: 10px;"></td></tr>
-                <tr>
-                  <td style="padding: 15px; background-color: #f8fafc; border-radius: 8px;">
-                    <div style="display: flex; align-items: start;">
-                      <div style="background-color: #6366f1; color: white; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 14px; flex-shrink: 0; margin-right: 15px;">2</div>
-                      <div>
-                        <p style="margin: 0 0 5px; color: #1e293b; font-weight: 600; font-size: 15px;">Attach a screenshot</p>
-                        <p style="margin: 0; color: #64748b; font-size: 14px;">Screenshot of your confirmation email or application portal</p>
-                      </div>
-                    </div>
+                  <td align="center">
+                    <a href="${verificationUrl}" style="display: inline-block; background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: #ffffff; text-decoration: none; padding: 16px 48px; border-radius: 8px; font-weight: 600; font-size: 18px; box-shadow: 0 4px 6px rgba(16, 185, 129, 0.3);">
+                      ✓ Verify My Report
+                    </a>
                   </td>
                 </tr>
               </table>
+              
+              <p style="margin: 20px 0; color: #64748b; font-size: 13px; text-align: center;">
+                Or copy this link: <a href="${verificationUrl}" style="color: #6366f1; word-break: break-all;">${verificationUrl}</a>
+              </p>
               
               <div style="background-color: #fef3c7; border-left: 4px solid #f59e0b; padding: 15px; margin: 30px 0; border-radius: 6px;">
                 <p style="margin: 0; color: #92400e; font-size: 14px; line-height: 1.6;">
