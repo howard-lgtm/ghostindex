@@ -1,22 +1,33 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #1A1D23;
-  --panel: #23262D;
-  --panel2: #2A2E36;
-  --border: #3C464B;
+  /* Supabase-inspired dark theme with emerald/teal accents */
+  --bg: #0F1419;
+  --panel: #1A1F26;
+  --panel2: #232931;
+  --border: #2D3748;
 
-  --text: #F2F2F2;
-  --text-dim: #A0A0A0;
-  --text-faint: #6B6B6B;
+  --text: #EDEDED;
+  --text-dim: #9CA3AF;
+  --text-faint: #6B7280;
 
-  --info: #40FED1;
-  --up: #40FED1;
-  --warn: #E36163;
-  --down: #E36163;
-  --mag: #8E5DEC;
+  /* Supabase green/teal palette */
+  --brand: #3ECF8E;
+  --brand-dark: #2FB574;
+  --brand-light: #5DDEAA;
+  
+  --info: #3ECF8E;
+  --up: #10B981;
+  --warn: #F59E0B;
+  --down: #EF4444;
+  --mag: #8B5CF6;
+  
+  /* Gradient accent colors (Loveable.dev style) */
+  --gradient-from: #3ECF8E;
+  --gradient-via: #06B6D4;
+  --gradient-to: #8B5CF6;
 
-  --r: 4px;
+  --r: 8px;
 }
 
 @theme inline {
@@ -55,8 +66,9 @@ html, body {
   background: var(--bg);
   color: var(--text);
   font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-  font-size: 13px;
-  line-height: 18px;
+  font-size: 16px;
+  line-height: 1.6;
+  letter-spacing: -0.011em;
 }
 
 .data, table, .mono {
@@ -93,7 +105,7 @@ html, body {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: .06em;
-  font-size: 11px;
+  font-size: 13px;
 }
 
 .row:hover {
@@ -184,11 +196,46 @@ html, body {
   align-items: center;
   gap: 0.25rem;
   font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-  font-size: 11px;
+  font-size: 12px;
   text-transform: uppercase;
   letter-spacing: .06em;
   color: var(--up);
   border: 1px solid var(--up);
-  padding: 2px 6px;
+  padding: 4px 8px;
   border-radius: var(--r);
+}
+
+/* Gradient accent utilities (Loveable.dev style) */
+.gradient-accent {
+  background: linear-gradient(135deg, var(--gradient-from) 0%, var(--gradient-via) 50%, var(--gradient-to) 100%);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, var(--gradient-from) 0%, var(--gradient-via) 50%, var(--gradient-to) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-border {
+  position: relative;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 2px;
+  background: linear-gradient(135deg, var(--gradient-from) 0%, var(--gradient-via) 50%, var(--gradient-to) 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.brand-glow {
+  box-shadow: 0 0 20px rgba(62, 207, 142, 0.3), 0 0 40px rgba(62, 207, 142, 0.1);
 }

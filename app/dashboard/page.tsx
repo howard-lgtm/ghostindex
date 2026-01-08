@@ -47,11 +47,11 @@ export default async function DashboardPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
             <Link href="/" className="flex items-center gap-2">
-              <AlertTriangle className="h-6 w-6 text-warning" />
-              <span className="text-xl font-bold text-primary">GhostIndex</span>
+              <AlertTriangle className="h-7 w-7 text-warning" />
+              <span className="text-2xl font-bold gradient-text">GhostIndex</span>
             </Link>
             <div className="flex items-center gap-4">
-              <Link href="/search" className="text-sm font-medium text-foreground hover:text-action">
+              <Link href="/search" className="text-base font-medium text-foreground hover:text-action transition-colors">
                 Search
               </Link>
               <Link href="/submit">
@@ -71,57 +71,57 @@ export default async function DashboardPage() {
 
       <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-primary">Dashboard</h1>
-          <p className="mt-2 text-slate-600 dark:text-slate-400">
+          <h1 className="text-4xl font-bold text-primary">Dashboard</h1>
+          <p className="mt-3 text-lg text-slate-600 dark:text-slate-400">
             Welcome back, {user.email}
           </p>
         </div>
 
         <div className="grid gap-6 md:grid-cols-3 mb-8">
-          <div className="rounded-lg bg-white dark:bg-slate-800 p-6 shadow-sm">
+          <div className="rounded-xl bg-panel border border-border p-6 shadow-lg hover:shadow-xl transition-shadow">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-slate-600 dark:text-slate-400">
+                <p className="text-base font-medium text-text-dim">
                   Total Reports
                 </p>
-                <p className="mt-2 text-3xl font-bold text-primary">
+                <p className="mt-2 text-4xl font-bold text-primary">
                   {totalReports || 0}
                 </p>
               </div>
-              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-action/10">
-                <Users className="h-6 w-6 text-action" />
+              <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-action/10 brand-glow">
+                <Users className="h-7 w-7 text-action" />
               </div>
             </div>
           </div>
 
-          <div className="rounded-lg bg-white dark:bg-slate-800 p-6 shadow-sm">
+          <div className="rounded-xl bg-panel border border-border p-6 shadow-lg hover:shadow-xl transition-shadow">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-slate-600 dark:text-slate-400">
+                <p className="text-base font-medium text-text-dim">
                   Verified Reports
                 </p>
-                <p className="mt-2 text-3xl font-bold text-primary">
+                <p className="mt-2 text-4xl font-bold text-up">
                   {verifiedReports || 0}
                 </p>
               </div>
-              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-green-500/10">
-                <TrendingUp className="h-6 w-6 text-green-600" />
+              <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-up/10">
+                <TrendingUp className="h-7 w-7 text-up" />
               </div>
             </div>
           </div>
 
-          <div className="rounded-lg bg-white dark:bg-slate-800 p-6 shadow-sm">
+          <div className="rounded-xl bg-panel border border-border p-6 shadow-lg hover:shadow-xl transition-shadow">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-slate-600 dark:text-slate-400">
+                <p className="text-base font-medium text-text-dim">
                   Pending
                 </p>
-                <p className="mt-2 text-3xl font-bold text-primary">
+                <p className="mt-2 text-4xl font-bold text-primary">
                   {(totalReports || 0) - (verifiedReports || 0)}
                 </p>
               </div>
-              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-warning/10">
-                <TrendingDown className="h-6 w-6 text-warning" />
+              <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-warning/10">
+                <TrendingDown className="h-7 w-7 text-warning" />
               </div>
             </div>
           </div>
@@ -131,16 +131,16 @@ export default async function DashboardPage() {
           <VerificationInstructions />
         </div>
 
-        <div className="rounded-lg bg-white dark:bg-slate-800 shadow-sm">
-          <div className="border-b border-slate-200 dark:border-slate-700 px-6 py-4">
-            <h2 className="text-xl font-semibold text-primary">Your Reports</h2>
+        <div className="rounded-xl bg-panel border border-border shadow-lg">
+          <div className="border-b border-border px-6 py-5">
+            <h2 className="text-2xl font-semibold text-primary">Your Reports</h2>
           </div>
           <div className="p-6">
             {!reports || reports.length === 0 ? (
-              <div className="text-center py-12">
-                <AlertTriangle className="mx-auto h-12 w-12 text-slate-400" />
-                <h3 className="mt-4 text-lg font-medium text-primary">No reports yet</h3>
-                <p className="mt-2 text-slate-600 dark:text-slate-400">
+              <div className="text-center py-16">
+                <AlertTriangle className="mx-auto h-16 w-16 text-text-dim" />
+                <h3 className="mt-6 text-xl font-semibold text-primary">No reports yet</h3>
+                <p className="mt-3 text-base text-text-dim">
                   Start by reporting a company that ghosted you
                 </p>
                 <Link href="/submit" className="mt-6 inline-block">
