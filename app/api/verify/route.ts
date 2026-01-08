@@ -148,9 +148,12 @@ export async function GET(request: Request) {
     const { data: userData } = await supabase.auth.admin.listUsers();
     const user = userData?.users.find(u => u.id === report.user_id);
 
+    console.log('User lookup result:', { userId: report.user_id, userFound: !!user, userEmail: user?.email });
+
     // Send confirmation email
     if (user?.email) {
       try {
+        console.log('Attempting to send confirmation email to:', user.email);
         const companyName = (report.companies as any)?.name || 'Unknown Company';
         const confirmationTemplate = getVerificationConfirmationTemplate({
           userName: user.user_metadata?.full_name || user.email.split('@')[0],
@@ -158,16 +161,20 @@ export async function GET(request: Request) {
           jobTitle: report.job_title || 'a position',
         });
 
-        await sendEmail({
+        const result = await sendEmail({
           to: user.email,
           subject: confirmationTemplate.subject,
           html: confirmationTemplate.html,
           text: confirmationTemplate.text,
         });
+        
+        console.log('Confirmation email send result:', result);
       } catch (emailError) {
         console.error('Failed to send confirmation email:', emailError);
         // Don't fail the verification if email fails
       }
+    } else {
+      console.error('No user email found for confirmation. User ID:', report.user_id);
     }
 
     // Return success page
