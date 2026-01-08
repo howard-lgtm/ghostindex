@@ -1,4 +1,4 @@
-import { createClient } from '@/lib/supabase/server';
+import { createClient, createServiceRoleClient } from '@/lib/supabase/server';
 import { sendEmail } from '@/lib/mailgun';
 import { getVerificationConfirmationTemplate } from '@/lib/email-templates';
 import { NextResponse } from 'next/server';
@@ -144,8 +144,9 @@ export async function GET(request: Request) {
       notes: 'Report verified via email link',
     });
 
-    // Get user email for confirmation
-    const { data: userData, error: userError } = await supabase.auth.admin.getUserById(report.user_id);
+    // Get user email for confirmation using service role client
+    const serviceRoleClient = createServiceRoleClient();
+    const { data: userData, error: userError } = await serviceRoleClient.auth.admin.getUserById(report.user_id);
     const user = userData?.user;
 
     console.log('User lookup result:', { userId: report.user_id, userFound: !!user, userEmail: user?.email, userError });
