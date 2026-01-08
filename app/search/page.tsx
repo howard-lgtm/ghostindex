@@ -200,24 +200,24 @@ export default function SearchPage() {
         {!searched && (
           <div className="text-center py-12">
             <div className="mx-auto max-w-md">
-              <div className="rounded-lg bg-slate-50 dark:bg-slate-900 p-8">
+              <div className="rounded-lg p-8 border" style={{background: 'var(--panel)', borderColor: 'var(--border)'}}>
                 <div className="mx-auto h-12 w-12 flex items-center justify-center">
                   <Logo size={48} />
                 </div>
-                <h3 className="mt-4 text-lg font-medium text-primary">
+                <h3 className="mt-4 text-lg font-medium" style={{color: 'var(--text)'}}>
                   Understanding Ghost Index Scores
                 </h3>
-                <div className="mt-4 space-y-2 text-left text-sm text-slate-600 dark:text-slate-400">
+                <div className="mt-4 space-y-2 text-left text-sm" style={{color: 'var(--text-dim)'}}>
                   <div className="flex items-center gap-2">
-                    <div className="h-3 w-3 rounded-full bg-green-500"></div>
+                    <div className="h-3 w-3 rounded-full" style={{background: 'var(--up)'}}></div>
                     <span><strong>0-39:</strong> Low ghosting risk</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <div className="h-3 w-3 rounded-full bg-warning"></div>
+                    <div className="h-3 w-3 rounded-full" style={{background: 'var(--warn)'}}></div>
                     <span><strong>40-69:</strong> Moderate ghosting risk</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <div className="h-3 w-3 rounded-full bg-red-500"></div>
+                    <div className="h-3 w-3 rounded-full" style={{background: 'var(--down)'}}></div>
                     <span><strong>70-100:</strong> High ghosting risk</span>
                   </div>
                 </div>
