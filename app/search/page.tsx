@@ -53,10 +53,10 @@ export default function SearchPage() {
   };
 
   const getScoreColor = (score: number | null) => {
-    if (score === null) return "text-slate-400";
-    if (score >= 70) return "text-red-600 dark:text-red-400";
-    if (score >= 40) return "text-warning";
-    return "text-green-600 dark:text-green-400";
+    if (score === null) return "var(--text-faint)";
+    if (score >= 70) return "var(--down)";
+    if (score >= 40) return "var(--warn)";
+    return "var(--up)";
   };
 
   const getScoreLabel = (score: number | null) => {
@@ -67,16 +67,16 @@ export default function SearchPage() {
   };
 
   return (
-    <div className="min-h-screen bg-background">
-      <nav className="border-b border-slate-200 dark:border-slate-800">
+    <div className="min-h-screen" style={{background: 'var(--bg)'}}>
+      <nav className="border-b" style={{borderColor: 'var(--border)'}}>
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
             <Link href="/" className="flex items-center gap-3">
               <Logo size={32} />
-              <span className="text-xl font-bold text-primary">GhostIndex</span>
+              <span className="text-2xl font-bold gradient-text">GhostIndex</span>
             </Link>
             <div className="flex items-center gap-4">
-              <Link href="/dashboard" className="text-sm font-medium text-foreground hover:text-action">
+              <Link href="/dashboard" className="text-base font-medium hover:text-action transition-colors" style={{color: 'var(--text-dim)'}}>
                 Dashboard
               </Link>
               <Link href="/submit">
@@ -91,8 +91,8 @@ export default function SearchPage() {
 
       <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
         <div className="mb-8 text-center">
-          <h1 className="text-4xl font-bold text-primary">Search Companies</h1>
-          <p className="mt-2 text-lg text-slate-600 dark:text-slate-400">
+          <h1 className="text-4xl font-bold" style={{color: 'var(--text)'}}>Search Companies</h1>
+          <p className="mt-2 text-lg" style={{color: 'var(--text-dim)'}}>
             Check ghost index scores before you apply
           </p>
         </div>
@@ -100,13 +100,14 @@ export default function SearchPage() {
         <div className="mx-auto max-w-2xl mb-12">
           <form onSubmit={handleSearch} className="flex gap-2">
             <div className="relative flex-1">
-              <Search className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400" />
+              <Search className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2" style={{color: 'var(--text-dim)'}} />
               <input
                 type="text"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Search by company name or domain..."
-                className="w-full pl-10 pr-4 py-3 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-action focus:border-transparent bg-white dark:bg-slate-900 text-foreground"
+                className="w-full pl-10 pr-4 py-3 border rounded-lg focus:ring-2 focus:ring-action focus:border-transparent"
+                style={{borderColor: 'var(--border)', background: 'var(--panel)', color: 'var(--text)'}}
               />
             </div>
             <Button type="submit" variant="action" size="lg" disabled={loading}>
@@ -160,7 +161,7 @@ export default function SearchPage() {
                                 className="h-5 w-5 object-cover"
                               />
                             )}
-                            <span className="text-white font-medium">{company.name}</span>
+                            <span className="font-medium" style={{color: 'var(--text)'}}>{company.name}</span>
                           </div>
                         </td>
                         <td className="text-muted data-mono text-xs">
@@ -176,15 +177,7 @@ export default function SearchPage() {
                           </span>
                         </td>
                         <td className="text-right">
-                          <span className={`data-mono text-xs font-bold ${
-                            company.ghost_index_score === null
-                              ? "text-muted"
-                              : company.ghost_index_score >= 70
-                              ? "risk-value"
-                              : company.ghost_index_score >= 40
-                              ? "risk-value"
-                              : "data-value"
-                          }`}>
+                          <span className="data-mono text-xs font-bold" style={{color: getScoreColor(company.ghost_index_score)}}>
                             {getScoreLabel(company.ghost_index_score)}
                           </span>
                         </td>
