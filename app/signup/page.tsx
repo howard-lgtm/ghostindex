@@ -102,13 +102,13 @@ export default function SignupPage() {
       <div className="flex-1 flex items-center justify-center px-4 py-12">
         <div className="w-full max-w-md">
           <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold text-primary">Create Account</h1>
-            <p className="mt-2 text-slate-600 dark:text-slate-400">
+            <h1 className="text-3xl font-bold" style={{color: 'var(--text)'}}>Create Account</h1>
+            <p className="mt-2" style={{color: 'var(--text-dim)'}}>
               Join GhostIndex and start holding companies accountable
             </p>
           </div>
 
-          <div className="bg-white dark:bg-slate-800 rounded-lg shadow-sm p-8">
+          <div className="rounded-lg shadow-sm p-8" style={{background: 'var(--panel)', border: '1px solid var(--border)'}}>
             <form onSubmit={handleSignup} className="space-y-6">
               {error && (
                 <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4">
@@ -117,7 +117,7 @@ export default function SignupPage() {
               )}
 
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-primary mb-2">
+                <label htmlFor="email" className="block text-sm font-medium mb-2" style={{color: 'var(--text)'}}>
                   Email
                 </label>
                 <input
@@ -126,13 +126,14 @@ export default function SignupPage() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
-                  className="w-full px-4 py-2 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-action focus:border-transparent bg-white dark:bg-slate-900 text-foreground"
+                  className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-action focus:border-transparent"
+                  style={{borderColor: 'var(--border)', background: 'var(--bg)', color: 'var(--text)'}}
                   placeholder="you@example.com"
                 />
               </div>
 
               <div>
-                <label htmlFor="password" className="block text-sm font-medium text-primary mb-2">
+                <label htmlFor="password" className="block text-sm font-medium mb-2" style={{color: 'var(--text)'}}>
                   Password
                 </label>
                 <input
@@ -141,13 +142,14 @@ export default function SignupPage() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
-                  className="w-full px-4 py-2 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-action focus:border-transparent bg-white dark:bg-slate-900 text-foreground"
+                  className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-action focus:border-transparent"
+                  style={{borderColor: 'var(--border)', background: 'var(--bg)', color: 'var(--text)'}}
                   placeholder="••••••••"
                 />
               </div>
 
               <div>
-                <label htmlFor="confirmPassword" className="block text-sm font-medium text-primary mb-2">
+                <label htmlFor="confirmPassword" className="block text-sm font-medium mb-2" style={{color: 'var(--text)'}}>
                   Confirm Password
                 </label>
                 <input
@@ -156,7 +158,8 @@ export default function SignupPage() {
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
                   required
-                  className="w-full px-4 py-2 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-action focus:border-transparent bg-white dark:bg-slate-900 text-foreground"
+                  className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-action focus:border-transparent"
+                  style={{borderColor: 'var(--border)', background: 'var(--bg)', color: 'var(--text)'}}
                   placeholder="••••••••"
                 />
               </div>
@@ -172,9 +175,9 @@ export default function SignupPage() {
             </form>
 
             <div className="mt-6 text-center">
-              <p className="text-sm text-slate-600 dark:text-slate-400">
+              <p className="text-sm" style={{color: 'var(--text-dim)'}}>
                 Already have an account?{" "}
-                <Link href="/login" className="font-medium text-action hover:text-indigo-700">
+                <Link href="/login" className="font-medium hover:underline" style={{color: 'var(--info)'}}>
                   Sign in
                 </Link>
               </p>

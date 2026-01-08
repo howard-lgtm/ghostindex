@@ -174,8 +174,8 @@ export default function SubmitPage() {
             <div className="mx-auto h-16 w-16 flex items-center justify-center">
               <Logo size={64} />
             </div>
-            <h2 className="mt-4 text-2xl font-bold text-primary">Sign In Required</h2>
-            <p className="mt-2 text-slate-600 dark:text-slate-400">
+            <h2 className="mt-4 text-2xl font-bold" style={{color: 'var(--text)'}}>Sign In Required</h2>
+            <p className="mt-2" style={{color: 'var(--text-dim)'}}>
               You need to be signed in to submit a report
             </p>
             <div className="mt-6 flex gap-4 justify-center">
@@ -218,13 +218,13 @@ export default function SubmitPage() {
       <div className="flex-1 flex items-center justify-center px-4 py-12">
         <div className="w-full max-w-md">
           <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold text-primary">Report Ghosting</h1>
-            <p className="mt-2 text-slate-600 dark:text-slate-400">
+            <h1 className="text-3xl font-bold" style={{color: 'var(--text)'}}>Report Ghosting</h1>
+            <p className="mt-2" style={{color: 'var(--text-dim)'}}>
               Help others by sharing your experience
             </p>
           </div>
 
-          <div className="bg-white dark:bg-slate-800 rounded-lg shadow-sm p-8">
+          <div className="rounded-lg shadow-sm p-8" style={{background: 'var(--panel)', border: '1px solid var(--border)'}}>
             <form onSubmit={handleSubmit} className="space-y-6">
               {error && (
                 <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4">
@@ -233,7 +233,7 @@ export default function SubmitPage() {
               )}
 
               <div>
-                <label htmlFor="companyName" className="block text-sm font-medium text-primary mb-2">
+                <label htmlFor="companyName" className="block text-sm font-medium mb-2" style={{color: 'var(--text)'}}>
                   Company Name *
                 </label>
                 <input
@@ -242,13 +242,14 @@ export default function SubmitPage() {
                   value={companyName}
                   onChange={(e) => setCompanyName(e.target.value)}
                   required
-                  className="w-full px-4 py-2 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-action focus:border-transparent bg-white dark:bg-slate-900 text-foreground"
+                  className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-action focus:border-transparent"
+                  style={{borderColor: 'var(--border)', background: 'var(--bg)', color: 'var(--text)'}}
                   placeholder="e.g., Acme Corp"
                 />
               </div>
 
               <div>
-                <label htmlFor="companyDomain" className="block text-sm font-medium text-primary mb-2">
+                <label htmlFor="companyDomain" className="block text-sm font-medium mb-2" style={{color: 'var(--text)'}}>
                   Company Domain *
                 </label>
                 <input
@@ -257,16 +258,17 @@ export default function SubmitPage() {
                   value={companyDomain}
                   onChange={(e) => setCompanyDomain(e.target.value)}
                   required
-                  className="w-full px-4 py-2 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-action focus:border-transparent bg-white dark:bg-slate-900 text-foreground"
+                  className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-action focus:border-transparent"
+                  style={{borderColor: 'var(--border)', background: 'var(--bg)', color: 'var(--text)'}}
                   placeholder="e.g., acme.com"
                 />
-                <p className="mt-1 text-xs text-slate-500">
+                <p className="mt-1 text-xs" style={{color: 'var(--text-faint)'}}>
                   Enter the company's website domain
                 </p>
               </div>
 
               <div>
-                <label htmlFor="jobTitle" className="block text-sm font-medium text-primary mb-2">
+                <label htmlFor="jobTitle" className="block text-sm font-medium mb-2" style={{color: 'var(--text)'}}>
                   Job Title (Optional)
                 </label>
                 <input
@@ -274,13 +276,14 @@ export default function SubmitPage() {
                   type="text"
                   value={jobTitle}
                   onChange={(e) => setJobTitle(e.target.value)}
-                  className="w-full px-4 py-2 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-action focus:border-transparent bg-white dark:bg-slate-900 text-foreground"
+                  className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-action focus:border-transparent"
+                  style={{borderColor: 'var(--border)', background: 'var(--bg)', color: 'var(--text)'}}
                   placeholder="e.g., Senior Software Engineer"
                 />
               </div>
 
               <div>
-                <label htmlFor="applicationDate" className="block text-sm font-medium text-primary mb-2">
+                <label htmlFor="applicationDate" className="block text-sm font-medium mb-2" style={{color: 'var(--text)'}}>
                   Application Date (Optional)
                 </label>
                 <input
@@ -289,9 +292,10 @@ export default function SubmitPage() {
                   value={applicationDate}
                   onChange={(e) => setApplicationDate(e.target.value)}
                   max={new Date().toISOString().split('T')[0]}
-                  className="w-full px-4 py-2 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-action focus:border-transparent bg-white dark:bg-slate-900 text-foreground"
+                  className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-action focus:border-transparent"
+                  style={{borderColor: 'var(--border)', background: 'var(--bg)', color: 'var(--text)'}}
                 />
-                <p className="mt-1 text-xs text-slate-500">
+                <p className="mt-1 text-xs" style={{color: 'var(--text-faint)'}}>
                   When did you apply? Helps with auto-ghost detection after 30 days.
                 </p>
               </div>
