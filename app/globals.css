@@ -27,6 +27,7 @@
   --warning-bg: #FEF3C7;
   --danger: #DC2626;
   --danger-bg: #FEE2E2;
+  --info-bg: #DBEAFE;
   
   /* Gradient accent colors (Loveable.dev style) */
   --gradient-from: #059669;
@@ -64,6 +65,7 @@
   --warning-bg: rgba(245, 158, 11, 0.1);
   --danger: #EF4444;
   --danger-bg: rgba(239, 68, 68, 0.1);
+  --info-bg: rgba(62, 207, 142, 0.1);
   
   --gradient-from: #3ECF8E;
   --gradient-via: #06B6D4;
