@@ -16,11 +16,14 @@ LinkedIn OAuth is already integrated in the UI (`OAuthButtons.tsx`) but needs co
 ## Step 2: Configure OAuth Settings
 
 1. In your LinkedIn app, go to **"Auth"** tab
-2. Add **Authorized redirect URLs**:
+2. Add **Authorized redirect URLs** (BOTH are required):
    ```
    https://kovcfugvlwrxkoacgbtg.supabase.co/auth/v1/callback
-   https://prj-bhtqv0sbv0afjxmi1blkcbpao4qpn.supabase.co/auth/v1/callback
+   https://getghostindex.com/auth/callback
    ```
+   **Important**: LinkedIn requires BOTH URLs to be whitelisted:
+   - First URL: Supabase OAuth callback
+   - Second URL: Your custom domain callback
 
 3. Request **OAuth 2.0 scopes**:
    - `openid` (required for OIDC)
