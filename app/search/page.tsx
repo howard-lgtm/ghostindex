@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { Search, TrendingDown, TrendingUp } from "lucide-react";
 import Logo from "@/components/Logo";
@@ -26,9 +26,68 @@ interface Company {
 export default function SearchPage() {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<Company[]>([]);
+  const [suggestions, setSuggestions] = useState<Company[]>([]);
   const [loading, setLoading] = useState(false);
   const [searched, setSearched] = useState(false);
+  const [showSuggestions, setShowSuggestions] = useState(false);
+  const [selectedIndex, setSelectedIndex] = useState(-1);
   const supabase = createClient();
+  const searchRef = useRef<HTMLDivElement>(null);
+  const debounceTimer = useRef<NodeJS.Timeout | null>(null);
+
+  // Live search with debouncing
+  useEffect(() => {
+    if (debounceTimer.current) {
+      clearTimeout(debounceTimer.current);
+    }
+
+    if (query.trim().length >= 2) {
+      debounceTimer.current = setTimeout(() => {
+        fetchSuggestions(query);
+      }, 300);
+    } else {
+      setSuggestions([]);
+      setShowSuggestions(false);
+    }
+
+    return () => {
+      if (debounceTimer.current) {
+        clearTimeout(debounceTimer.current);
+      }
+    };
+  }, [query]);
+
+  // Click outside to close suggestions
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (searchRef.current && !searchRef.current.contains(event.target as Node)) {
+        setShowSuggestions(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  const fetchSuggestions = async (searchQuery: string) => {
+    try {
+      const { data, error } = await supabase
+        .from("companies")
+        .select("*")
+        .or(`name.ilike.%${searchQuery}%,domain.ilike.%${searchQuery}%`)
+        .order("ghost_index_score", { ascending: false, nullsFirst: false })
+        .limit(10);
+
+      if (error) throw error;
+      
+      setSuggestions(data || []);
+      setShowSuggestions(true);
+      setSelectedIndex(-1);
+    } catch (error) {
+      console.error("Suggestion fetch error:", error);
+      setSuggestions([]);
+    }
+  };
 
   const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -36,6 +95,7 @@ export default function SearchPage() {
 
     setLoading(true);
     setSearched(true);
+    setShowSuggestions(false);
 
     try {
       const { data, error } = await supabase
@@ -57,6 +117,42 @@ export default function SearchPage() {
       setResults([]);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const selectCompany = (company: Company) => {
+    setQuery(company.name);
+    setShowSuggestions(false);
+    setResults([company]);
+    setSearched(true);
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (!showSuggestions || suggestions.length === 0) return;
+
+    switch (e.key) {
+      case 'ArrowDown':
+        e.preventDefault();
+        setSelectedIndex(prev => 
+          prev < suggestions.length - 1 ? prev + 1 : prev
+        );
+        break;
+      case 'ArrowUp':
+        e.preventDefault();
+        setSelectedIndex(prev => prev > 0 ? prev - 1 : -1);
+        break;
+      case 'Enter':
+        e.preventDefault();
+        if (selectedIndex >= 0 && selectedIndex < suggestions.length) {
+          selectCompany(suggestions[selectedIndex]);
+        } else {
+          handleSearch(e);
+        }
+        break;
+      case 'Escape':
+        setShowSuggestions(false);
+        setSelectedIndex(-1);
+        break;
     }
   };
 
@@ -107,16 +203,86 @@ export default function SearchPage() {
 
         <div className="mx-auto max-w-2xl mb-12">
           <form onSubmit={handleSearch} className="flex gap-2">
-            <div className="relative flex-1">
+            <div className="relative flex-1" ref={searchRef}>
               <Search className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2" style={{color: 'var(--text-dim)'}} />
               <input
                 type="text"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
+                onKeyDown={handleKeyDown}
+                onFocus={() => {
+                  if (suggestions.length > 0) setShowSuggestions(true);
+                }}
                 placeholder="Search by company name or domain..."
                 className="w-full pl-10 pr-4 py-3 border rounded-lg focus:ring-2 focus:ring-action focus:border-transparent"
                 style={{borderColor: 'var(--border)', background: 'var(--panel)', color: 'var(--text)'}}
+                autoComplete="off"
               />
+              
+              {/* Live search suggestions dropdown */}
+              {showSuggestions && suggestions.length > 0 && (
+                <div 
+                  className="absolute z-50 w-full mt-2 border rounded-lg shadow-lg overflow-hidden"
+                  style={{background: 'var(--panel)', borderColor: 'var(--border)'}}
+                >
+                  {suggestions.map((company, index) => (
+                    <div
+                      key={company.id}
+                      onClick={() => selectCompany(company)}
+                      onMouseEnter={() => setSelectedIndex(index)}
+                      className="px-4 py-3 cursor-pointer transition-colors border-b last:border-b-0"
+                      style={{
+                        background: selectedIndex === index ? 'var(--bg)' : 'var(--panel)',
+                        borderColor: 'var(--border)'
+                      }}
+                    >
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-3 flex-1">
+                          <img
+                            src={getCompanyLogoUrl(company.domain)}
+                            alt={company.name}
+                            className="h-6 w-6 object-contain"
+                            onError={(e) => {
+                              const img = e.target as HTMLImageElement;
+                              img.src = getFaviconUrl(company.domain, 32);
+                            }}
+                          />
+                          <div className="flex flex-col">
+                            <div className="flex items-center gap-2">
+                              <span className="font-medium" style={{color: 'var(--text)'}}>
+                                {company.name}
+                              </span>
+                              {company.stock_symbol && (
+                                <span className="data-mono text-xs" style={{color: 'var(--info)'}}>
+                                  ({company.stock_symbol})
+                                </span>
+                              )}
+                            </div>
+                            <span className="text-xs data-mono" style={{color: 'var(--text-dim)'}}>
+                              {company.domain}
+                            </span>
+                          </div>
+                        </div>
+                        <div className="flex items-center gap-3">
+                          {company.industry && (
+                            <span className="text-xs data-mono" style={{color: 'var(--text-dim)'}}>
+                              {company.industry}
+                            </span>
+                          )}
+                          {company.ghost_index_score !== null && (
+                            <span 
+                              className="data-mono text-sm font-bold"
+                              style={{color: getScoreColor(company.ghost_index_score)}}
+                            >
+                              {company.ghost_index_score.toFixed(1)}
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
             <Button type="submit" variant="action" size="lg" disabled={loading}>
               {loading ? "Searching..." : "Search"}
