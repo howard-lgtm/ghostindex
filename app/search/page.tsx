@@ -6,6 +6,7 @@ import { Search, TrendingDown, TrendingUp } from "lucide-react";
 import Logo from "@/components/Logo";
 import { Button } from "@/components/ui/button";
 import { createClient } from "@/lib/supabase/client";
+import { getCompanyLogoUrl, getFaviconUrl } from "@/lib/utils/company-logo";
 
 interface Company {
   id: string;
@@ -154,13 +155,15 @@ export default function SearchPage() {
                       <tr key={company.id}>
                         <td>
                           <div className="flex items-center gap-1.5">
-                            {company.logo && (
-                              <img
-                                src={company.logo}
-                                alt={company.name}
-                                className="h-5 w-5 object-cover"
-                              />
-                            )}
+                            <img
+                              src={getCompanyLogoUrl(company.domain)}
+                              alt={company.name}
+                              className="h-5 w-5 object-contain"
+                              onError={(e) => {
+                                const img = e.target as HTMLImageElement;
+                                img.src = getFaviconUrl(company.domain, 32);
+                              }}
+                            />
                             <span className="font-medium" style={{color: 'var(--text)'}}>{company.name}</span>
                           </div>
                         </td>
