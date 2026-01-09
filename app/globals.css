@@ -21,6 +21,13 @@
   --down: #DC2626;
   --mag: #7C3AED;
   
+  --success: #059669;
+  --success-bg: #D1FAE5;
+  --warning: #D97706;
+  --warning-bg: #FEF3C7;
+  --danger: #DC2626;
+  --danger-bg: #FEE2E2;
+  
   /* Gradient accent colors (Loveable.dev style) */
   --gradient-from: #059669;
   --gradient-via: #0891B2;
@@ -50,6 +57,13 @@
   --warn: #F59E0B;
   --down: #EF4444;
   --mag: #8B5CF6;
+  
+  --success: #10B981;
+  --success-bg: rgba(16, 185, 129, 0.1);
+  --warning: #F59E0B;
+  --warning-bg: rgba(245, 158, 11, 0.1);
+  --danger: #EF4444;
+  --danger-bg: rgba(239, 68, 68, 0.1);
   
   --gradient-from: #3ECF8E;
   --gradient-via: #06B6D4;

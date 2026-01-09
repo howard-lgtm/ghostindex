@@ -45,7 +45,7 @@ export default async function DashboardPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      <nav className="border-b border-slate-200 dark:border-slate-800">
+      <nav style={{borderBottom: '1px solid var(--border)'}}>
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
             <Link href="/" className="flex items-center gap-3">
@@ -53,7 +53,7 @@ export default async function DashboardPage() {
               <span className="text-2xl font-bold gradient-text">GhostIndex</span>
             </Link>
             <div className="flex items-center gap-4">
-              <Link href="/search" className="text-base font-medium text-foreground hover:text-action transition-colors">
+              <Link href="/search" className="text-base font-medium transition-colors" style={{color: 'var(--text)'}}>
                 Search
               </Link>
               <Link href="/submit">
@@ -74,8 +74,8 @@ export default async function DashboardPage() {
 
       <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
         <div className="mb-8">
-          <h1 className="text-4xl font-bold text-primary">Dashboard</h1>
-          <p className="mt-3 text-lg text-slate-600 dark:text-slate-400">
+          <h1 className="text-4xl font-bold" style={{color: 'var(--text)'}}>Dashboard</h1>
+          <p className="mt-3 text-lg" style={{color: 'var(--text-dim)'}}>
             Welcome back, {user.email}
           </p>
         </div>
@@ -136,7 +136,7 @@ export default async function DashboardPage() {
 
         <div className="rounded-xl bg-panel border border-border shadow-lg">
           <div className="border-b border-border px-6 py-5">
-            <h2 className="text-2xl font-semibold text-primary">Your Reports</h2>
+            <h2 className="text-2xl font-semibold" style={{color: 'var(--text)'}}>Your Reports</h2>
           </div>
           <div className="p-6">
             {!reports || reports.length === 0 ? (
@@ -144,8 +144,8 @@ export default async function DashboardPage() {
                 <div className="mx-auto h-16 w-16 flex items-center justify-center opacity-50">
                   <Logo size={64} />
                 </div>
-                <h3 className="mt-6 text-xl font-semibold text-primary">No reports yet</h3>
-                <p className="mt-3 text-base text-text-dim">
+                <h3 className="mt-6 text-xl font-semibold" style={{color: 'var(--text)'}}>No reports yet</h3>
+                <p className="mt-3 text-base" style={{color: 'var(--text-dim)'}}>
                   Start by reporting a company that ghosted you
                 </p>
                 <Link href="/submit" className="mt-6 inline-block">
@@ -157,43 +157,42 @@ export default async function DashboardPage() {
                 {reports.map((report: any) => (
                   <div
                     key={report.id}
-                    className="flex items-center justify-between rounded-lg border border-slate-200 dark:border-slate-700 p-4"
+                    className="flex items-center justify-between rounded-lg p-4"
+                    style={{border: '1px solid var(--border)'}}
                   >
                     <div className="flex-1">
                       <div className="flex items-center gap-3">
-                        <h3 className="font-semibold text-primary">
+                        <h3 className="font-semibold" style={{color: 'var(--text)'}}>
                           {report.companies?.name || "Unknown Company"}
                         </h3>
                         {report.is_verified && (
-                          <span className="inline-flex items-center rounded-full bg-green-100 dark:bg-green-900/30 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:text-green-400">
+                          <span className="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium" style={{background: 'var(--success-bg)', color: 'var(--success)'}}>
                             Verified
                           </span>
                         )}
                         <span
-                          className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${
-                            report.status === "approved"
-                              ? "bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-400"
-                              : report.status === "rejected"
-                              ? "bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-400"
-                              : "bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-400"
-                          }`}
+                          className="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium"
+                          style={{
+                            background: report.status === "approved" ? 'var(--success-bg)' : report.status === "rejected" ? 'var(--danger-bg)' : 'var(--warning-bg)',
+                            color: report.status === "approved" ? 'var(--success)' : report.status === "rejected" ? 'var(--danger)' : 'var(--warning)'
+                          }}
                         >
                           {report.status}
                         </span>
                       </div>
-                      <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">
+                      <p className="mt-1 text-sm" style={{color: 'var(--text-dim)'}}>
                         {report.job_title || "No job title provided"}
                       </p>
-                      <p className="mt-1 text-xs text-slate-500 dark:text-slate-500">
+                      <p className="mt-1 text-xs" style={{color: 'var(--text-faint)'}}>
                         Submitted {new Date(report.created_at).toLocaleDateString()}
                       </p>
                     </div>
                     {report.companies?.ghost_index_score !== null && (
                       <div className="ml-4 text-right">
-                        <p className="text-sm font-medium text-slate-600 dark:text-slate-400">
+                        <p className="text-sm font-medium" style={{color: 'var(--text-dim)'}}>
                           Ghost Score
                         </p>
-                        <p className="text-2xl font-bold text-warning">
+                        <p className="text-2xl font-bold" style={{color: 'var(--warning)'}}>
                           {report.companies.ghost_index_score}
                         </p>
                       </div>
