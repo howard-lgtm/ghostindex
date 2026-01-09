@@ -121,7 +121,7 @@ export default function SubmitPage() {
   if (success) {
     return (
       <div className="min-h-screen bg-background flex flex-col">
-        <nav className="border-b border-slate-200 dark:border-slate-800">
+        <nav style={{borderBottom: '1px solid var(--border)'}}>
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="flex h-16 items-center justify-between">
               <Link href="/" className="flex items-center gap-3">
@@ -134,18 +134,18 @@ export default function SubmitPage() {
 
         <div className="flex-1 flex items-center justify-center px-4 py-12">
           <div className="w-full max-w-md text-center">
-            <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-8">
-              <CheckCircle className="mx-auto h-16 w-16 text-green-600 dark:text-green-400" />
-              <h2 className="mt-4 text-2xl font-bold text-green-900 dark:text-green-100">
+            <div className="rounded-lg p-8" style={{background: 'var(--success-bg)', border: '1px solid var(--success)'}}>
+              <CheckCircle className="mx-auto h-16 w-16" style={{color: 'var(--success)'}} />
+              <h2 className="mt-4 text-2xl font-bold" style={{color: 'var(--text)'}}>
                 Report Published!
               </h2>
-              <p className="mt-2 text-green-700 dark:text-green-300">
+              <p className="mt-2" style={{color: 'var(--text-dim)'}}>
                 Your report is now live on GhostIndex. Check your email for verification instructions.
               </p>
-              <p className="mt-4 text-sm text-green-600 dark:text-green-400">
+              <p className="mt-4 text-sm" style={{color: 'var(--text-dim)'}}>
                 Simply reply to the email with your application confirmation to verify your report.
               </p>
-              <p className="mt-2 text-sm text-green-600 dark:text-green-400">
+              <p className="mt-2 text-sm" style={{color: 'var(--text-dim)'}}>
                 Redirecting to dashboard...
               </p>
             </div>
@@ -158,7 +158,7 @@ export default function SubmitPage() {
   if (!user) {
     return (
       <div className="min-h-screen bg-background flex flex-col">
-        <nav className="border-b border-slate-200 dark:border-slate-800">
+        <nav style={{borderBottom: '1px solid var(--border)'}}>
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="flex h-16 items-center justify-between">
               <Link href="/" className="flex items-center gap-3">
@@ -227,8 +227,8 @@ export default function SubmitPage() {
           <div className="rounded-lg shadow-sm p-8" style={{background: 'var(--panel)', border: '1px solid var(--border)'}}>
             <form onSubmit={handleSubmit} className="space-y-6">
               {error && (
-                <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4">
-                  <p className="text-sm text-red-600 dark:text-red-400">{error}</p>
+                <div className="rounded-lg p-4" style={{background: 'var(--danger-bg)', border: '1px solid var(--danger)'}}>
+                  <p className="text-sm" style={{color: 'var(--danger)'}}>{error}</p>
                 </div>
               )}
 
@@ -300,11 +300,11 @@ export default function SubmitPage() {
                 </p>
               </div>
 
-              <div className="bg-indigo-50 dark:bg-indigo-900/20 border border-indigo-200 dark:border-indigo-800 rounded-lg p-4">
-                <p className="text-sm text-indigo-900 dark:text-indigo-100 font-medium mb-2">
+              <div className="rounded-lg p-4" style={{background: 'var(--info-bg)', border: '1px solid var(--info)'}}>
+                <p className="text-sm font-medium mb-2" style={{color: 'var(--text)'}}>
                   ✅ Your report will be published immediately!
                 </p>
-                <p className="text-sm text-indigo-700 dark:text-indigo-300">
+                <p className="text-sm" style={{color: 'var(--text-dim)'}}>
                   We'll send you a verification email. Simply reply with your application confirmation to verify your report and enable auto-ghost detection.
                 </p>
               </div>
