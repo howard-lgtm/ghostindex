@@ -5,9 +5,5 @@ export default function DashboardLayout({
 }: {
   children: ReactNode;
 }) {
-  return (
-    <div className="h-screen w-screen overflow-hidden bg-terminal-black">
-      {children}
-    </div>
-  );
+  return <>{children}</>;
 }
