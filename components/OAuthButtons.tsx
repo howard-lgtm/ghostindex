@@ -5,36 +5,46 @@ import { useState } from 'react';
 
 export default function OAuthButtons() {
   const [loading, setLoading] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const supabase = createClient();
 
   const handleOAuthSignIn = async (provider: 'google' | 'linkedin_oidc') => {
     setLoading(provider);
+    setError(null);
+    
     try {
-      const { error } = await supabase.auth.signInWithOAuth({
+      const { error: oauthError } = await supabase.auth.signInWithOAuth({
         provider,
         options: {
           redirectTo: `${window.location.origin}/auth/callback`,
         },
       });
 
-      if (error) {
-        console.error('OAuth error:', error);
-        alert(`Failed to sign in with ${provider}: ${error.message}`);
+      if (oauthError) {
+        console.error('OAuth error:', oauthError);
+        const providerName = provider === 'google' ? 'Google' : 'LinkedIn';
+        setError(`Failed to sign in with ${providerName}. Please try again or contact support if the issue persists.`);
+        setLoading(null);
       }
+      // If no error, user will be redirected to OAuth provider
     } catch (err) {
-      console.error('OAuth error:', err);
-      alert('An error occurred during sign in');
-    } finally {
+      console.error('OAuth exception:', err);
+      setError('An unexpected error occurred. Please try again.');
       setLoading(null);
     }
   };
 
   return (
     <div className="space-y-3">
+      {error && (
+        <div className="rounded-lg p-3" style={{background: 'var(--danger-bg)', border: '1px solid var(--danger)'}}>
+          <p className="text-sm" style={{color: 'var(--danger)'}}>{error}</p>
+        </div>
+      )}
       <button
         onClick={() => handleOAuthSignIn('google')}
         disabled={loading !== null}
-        className="w-full flex items-center justify-center gap-3 px-4 py-3 border rounded-lg font-medium transition-colors hover:bg-opacity-90"
+        className="w-full flex items-center justify-center gap-3 px-4 py-3 border rounded-lg font-medium transition-colors hover:bg-opacity-90 disabled:opacity-50 disabled:cursor-not-allowed"
         style={{
           borderColor: 'var(--border)',
           background: 'var(--bg)',
@@ -65,7 +75,7 @@ export default function OAuthButtons() {
       <button
         onClick={() => handleOAuthSignIn('linkedin_oidc')}
         disabled={loading !== null}
-        className="w-full flex items-center justify-center gap-3 px-4 py-3 border rounded-lg font-medium transition-colors hover:bg-opacity-90"
+        className="w-full flex items-center justify-center gap-3 px-4 py-3 border rounded-lg font-medium transition-colors hover:bg-opacity-90 disabled:opacity-50 disabled:cursor-not-allowed"
         style={{
           borderColor: 'var(--border)',
           background: 'var(--bg)',
