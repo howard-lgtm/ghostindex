@@ -44,7 +44,7 @@ export default async function DashboardPage() {
     .eq("is_verified", true);
 
   return (
-    <div className="min-h-screen bg-background" style={{minHeight: '100vh', height: 'auto'}}>
+    <div className="min-h-screen bg-background">
       <nav style={{borderBottom: '1px solid var(--border)'}}>
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
