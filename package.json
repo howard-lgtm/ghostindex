@@ -9,7 +9,8 @@
     "lint": "eslint",
     "seed:companies": "tsx scripts/seed-companies.ts",
     "test:connection": "tsx scripts/test-connection.ts",
-    "check:mailgun": "tsx tools/check-mailgun-status.ts"
+    "check:mailgun": "tsx tools/check-mailgun-status.ts",
+    "update:company-data": "tsx scripts/update-company-data.ts"
   },
   "dependencies": {
     "@supabase/ssr": "^0.8.0",
