@@ -14,6 +14,13 @@ interface Company {
   domain: string;
   logo: string | null;
   ghost_index_score: number | null;
+  stock_symbol: string | null;
+  company_type: 'public' | 'private' | 'startup' | 'nonprofit' | null;
+  industry: string | null;
+  employee_count_range: string | null;
+  founded_year: number | null;
+  headquarters: string | null;
+  description: string | null;
 }
 
 export default function SearchPage() {
@@ -144,31 +151,48 @@ export default function SearchPage() {
                   <thead>
                     <tr>
                       <th className="text-left">COMPANY</th>
-                      <th className="text-left">DOMAIN</th>
+                      <th className="text-left">TYPE</th>
+                      <th className="text-left">INDUSTRY</th>
+                      <th className="text-right">SIZE</th>
                       <th className="text-right">INDEX</th>
                       <th className="text-right">RISK</th>
-                      <th className="text-center">STATUS</th>
                     </tr>
                   </thead>
                   <tbody>
                     {results.map((company) => (
                       <tr key={company.id}>
                         <td>
-                          <div className="flex items-center gap-1.5">
-                            <img
-                              src={getCompanyLogoUrl(company.domain)}
-                              alt={company.name}
-                              className="h-5 w-5 object-contain"
-                              onError={(e) => {
-                                const img = e.target as HTMLImageElement;
-                                img.src = getFaviconUrl(company.domain, 32);
-                              }}
-                            />
-                            <span className="font-medium" style={{color: 'var(--text)'}}>{company.name}</span>
+                          <div className="flex flex-col gap-0.5">
+                            <div className="flex items-center gap-1.5">
+                              <img
+                                src={getCompanyLogoUrl(company.domain)}
+                                alt={company.name}
+                                className="h-5 w-5 object-contain"
+                                onError={(e) => {
+                                  const img = e.target as HTMLImageElement;
+                                  img.src = getFaviconUrl(company.domain, 32);
+                                }}
+                              />
+                              <span className="font-medium" style={{color: 'var(--text)'}}>{company.name}</span>
+                              {company.stock_symbol && (
+                                <span className="data-mono text-xs" style={{color: 'var(--info)'}}>({company.stock_symbol})</span>
+                              )}
+                            </div>
+                            <span className="text-muted data-mono text-xs">{company.domain}</span>
                           </div>
                         </td>
+                        <td>
+                          {company.company_type && (
+                            <span className="data-mono text-xs uppercase" style={{color: company.company_type === 'public' ? 'var(--up)' : 'var(--text-dim)'}}>
+                              {company.company_type}
+                            </span>
+                          )}
+                        </td>
                         <td className="text-muted data-mono text-xs">
-                          {company.domain}
+                          {company.industry || '—'}
+                        </td>
+                        <td className="text-right text-muted data-mono text-xs">
+                          {company.employee_count_range || '—'}
                         </td>
                         <td className="text-right">
                           <span className={`data-mono text-lg font-bold ${
@@ -180,16 +204,16 @@ export default function SearchPage() {
                           </span>
                         </td>
                         <td className="text-right">
-                          <span className="data-mono text-xs font-bold" style={{color: getScoreColor(company.ghost_index_score)}}>
-                            {getScoreLabel(company.ghost_index_score)}
-                          </span>
-                        </td>
-                        <td className="text-center">
-                          {company.ghost_index_score !== null && (
-                            <span className="verified-badge">
-                              ✓ VERIFIED
+                          <div className="flex flex-col items-end gap-0.5">
+                            <span className="data-mono text-xs font-bold" style={{color: getScoreColor(company.ghost_index_score)}}>
+                              {getScoreLabel(company.ghost_index_score)}
                             </span>
-                          )}
+                            {company.ghost_index_score !== null && (
+                              <span className="verified-badge text-xs">
+                                ✓ VERIFIED
+                              </span>
+                            )}
+                          </div>
                         </td>
                       </tr>
                     ))}
