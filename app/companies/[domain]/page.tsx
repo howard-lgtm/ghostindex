@@ -11,26 +11,28 @@ interface PageProps {
 }
 
 export default async function CompanyDetailPage({ params }: PageProps) {
-  const { domain } = await params;
-  const supabase = await createClient();
+  try {
+    const { domain } = await params;
+    const supabase = await createClient();
 
-  // Fetch company details
-  const { data: company, error: companyError } = await supabase
-    .from("companies")
-    .select("*")
-    .eq("domain", domain)
-    .single();
+    // Fetch company details
+    const { data: company, error: companyError } = await supabase
+      .from("companies")
+      .select("*")
+      .eq("domain", domain)
+      .single();
 
-  if (companyError || !company) {
-    notFound();
-  }
+    if (companyError || !company) {
+      console.error('Company not found:', domain, companyError);
+      notFound();
+    }
 
-  // Fetch all reports for this company
-  const { data: reports, error: reportsError } = await supabase
-    .from("reports")
-    .select("*")
-    .eq("company_id", company.id)
-    .order("created_at", { ascending: false });
+    // Fetch all reports for this company
+    const { data: reports, error: reportsError } = await supabase
+      .from("reports")
+      .select("*")
+      .eq("company_id", company.id)
+      .order("created_at", { ascending: false });
 
   // Calculate report statistics
   const totalReports = reports?.length || 0;
@@ -329,4 +331,8 @@ export default async function CompanyDetailPage({ params }: PageProps) {
       </main>
     </div>
   );
+  } catch (error) {
+    console.error('Error loading company page:', error);
+    notFound();
+  }
 }
