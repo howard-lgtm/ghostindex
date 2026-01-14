@@ -155,9 +155,10 @@ export default async function DashboardPage() {
             ) : (
               <div className="space-y-4">
                 {reports.map((report: any) => (
-                  <div
+                  <Link
                     key={report.id}
-                    className="flex items-center justify-between rounded-lg p-4"
+                    href={`/reports/${report.id}`}
+                    className="flex items-center justify-between rounded-lg p-4 hover:bg-panel2 transition-colors"
                     style={{border: '1px solid var(--border)'}}
                   >
                     <div className="flex-1">
@@ -197,7 +198,7 @@ export default async function DashboardPage() {
                         </p>
                       </div>
                     )}
-                  </div>
+                  </Link>
                 ))}
               </div>
             )}
