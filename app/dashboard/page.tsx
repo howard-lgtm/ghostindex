@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import VerificationInstructions from "@/components/VerificationInstructions";
 import ThemeToggle from "@/components/ThemeToggle";
 import Logo from "@/components/Logo";
+import ResendVerificationButton from "@/components/ReportCard";
 
 export default async function DashboardPage() {
   const supabase = await createClient();
@@ -187,6 +188,14 @@ export default async function DashboardPage() {
                       <p className="mt-1 text-xs" style={{color: 'var(--text-faint)'}}>
                         Submitted {new Date(report.created_at).toLocaleDateString()}
                       </p>
+                      {!report.is_verified && (
+                        <div className="mt-2">
+                          <ResendVerificationButton 
+                            reportId={report.id} 
+                            companyName={report.companies?.name || 'Unknown Company'} 
+                          />
+                        </div>
+                      )}
                     </div>
                     {report.companies?.ghost_index_score !== null && (
                       <div className="ml-4 text-right">
