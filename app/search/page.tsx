@@ -340,24 +340,26 @@ export default function SearchPage() {
                     {results.map((company) => (
                       <tr key={company.id}>
                         <td>
-                          <div className="flex flex-col gap-0.5">
-                            <div className="flex items-center gap-1.5">
-                              <img
-                                src={getCompanyLogoUrl(company.domain)}
-                                alt={company.name}
-                                className="h-5 w-5 object-contain"
-                                onError={(e) => {
-                                  const img = e.target as HTMLImageElement;
-                                  img.src = getFaviconUrl(company.domain, 32);
-                                }}
-                              />
-                              <span className="font-medium" style={{color: 'var(--text)'}}>{company.name}</span>
-                              {company.stock_symbol && (
-                                <span className="data-mono text-xs" style={{color: 'var(--info)'}}>({company.stock_symbol})</span>
-                              )}
+                          <Link href={`/companies/${company.domain}`} className="block hover:opacity-80 transition-opacity">
+                            <div className="flex flex-col gap-0.5">
+                              <div className="flex items-center gap-1.5">
+                                <img
+                                  src={getCompanyLogoUrl(company.domain)}
+                                  alt={company.name}
+                                  className="h-5 w-5 object-contain"
+                                  onError={(e) => {
+                                    const img = e.target as HTMLImageElement;
+                                    img.src = getFaviconUrl(company.domain, 32);
+                                  }}
+                                />
+                                <span className="font-medium" style={{color: 'var(--text)'}}>{company.name}</span>
+                                {company.stock_symbol && (
+                                  <span className="data-mono text-xs" style={{color: 'var(--info)'}}>({company.stock_symbol})</span>
+                                )}
+                              </div>
+                              <span className="text-muted data-mono text-xs">{company.domain}</span>
                             </div>
-                            <span className="text-muted data-mono text-xs">{company.domain}</span>
-                          </div>
+                          </Link>
                         </td>
                         <td>
                           {company.company_type && (
