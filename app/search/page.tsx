@@ -5,7 +5,6 @@ import Link from "next/link";
 import { Search, TrendingDown, TrendingUp } from "lucide-react";
 import Logo from "@/components/Logo";
 import { Button } from "@/components/ui/button";
-import { createClient } from "@/lib/supabase/client";
 import { getCompanyLogoUrl, getFaviconUrl } from "@/lib/utils/company-logo";
 
 interface Company {
@@ -31,7 +30,7 @@ export default function SearchPage() {
   const [searched, setSearched] = useState(false);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(-1);
-  const supabase = createClient();
+  const [error, setError] = useState<string | null>(null);
   const searchRef = useRef<HTMLDivElement>(null);
   const debounceTimer = useRef<NodeJS.Timeout | null>(null);
 
@@ -71,18 +70,23 @@ export default function SearchPage() {
 
   const fetchSuggestions = async (searchQuery: string) => {
     try {
-      const { data, error } = await supabase
-        .from("companies")
-        .select("*")
-        .or(`name.ilike.%${searchQuery}%,domain.ilike.%${searchQuery}%`)
-        .order("ghost_index_score", { ascending: false, nullsFirst: false })
-        .limit(10);
-
-      if (error) throw error;
+      const response = await fetch(`/api/search?q=${encodeURIComponent(searchQuery)}&limit=10`);
       
-      setSuggestions(data || []);
+      if (response.status === 429) {
+        setError('Too many searches. Please wait a moment.');
+        setSuggestions([]);
+        return;
+      }
+      
+      if (!response.ok) {
+        throw new Error('Search failed');
+      }
+      
+      const result = await response.json();
+      setSuggestions(result.data || []);
       setShowSuggestions(true);
       setSelectedIndex(-1);
+      setError(null);
     } catch (error) {
       console.error("Suggestion fetch error:", error);
       setSuggestions([]);
@@ -96,24 +100,27 @@ export default function SearchPage() {
     setLoading(true);
     setSearched(true);
     setShowSuggestions(false);
+    setError(null);
 
     try {
-      const { data, error } = await supabase
-        .from("companies")
-        .select("*")
-        .or(`name.ilike.%${query}%,domain.ilike.%${query}%`)
-        .order("ghost_index_score", { ascending: false, nullsFirst: false })
-        .limit(20);
-
-      if (error) {
-        console.error("Supabase error:", error);
-        throw error;
+      const response = await fetch(`/api/search?q=${encodeURIComponent(query)}&limit=50`);
+      
+      if (response.status === 429) {
+        setError('Too many searches. Please wait a moment.');
+        setResults([]);
+        return;
       }
       
-      console.log("Search results:", data);
-      setResults(data || []);
+      if (!response.ok) {
+        throw new Error('Search failed. Please try again.');
+      }
+      
+      const result = await response.json();
+      setResults(result.data || []);
+      setError(null);
     } catch (error) {
       console.error("Search error:", error);
+      setError('Search failed. Please try again.');
       setResults([]);
     } finally {
       setLoading(false);
@@ -202,6 +209,11 @@ export default function SearchPage() {
         </div>
 
         <div className="mx-auto max-w-2xl mb-12">
+          {error && (
+            <div className="mb-4 p-3 rounded-lg border" style={{background: 'var(--panel)', borderColor: 'var(--down)', color: 'var(--down)'}}>
+              {error}
+            </div>
+          )}
           <form onSubmit={handleSearch} className="flex gap-2">
             <div className="relative flex-1" ref={searchRef}>
               <Search className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2" style={{color: 'var(--text-dim)'}} />
