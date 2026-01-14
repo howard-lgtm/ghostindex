@@ -1,14 +1,16 @@
-import DOMPurify from 'isomorphic-dompurify';
-
 /**
- * Sanitize user input by stripping all HTML tags
+ * Sanitize user input by stripping all HTML tags and dangerous characters
  * Use for text inputs like company names, domains, job titles
  */
 export function sanitizeInput(input: string): string {
-  return DOMPurify.sanitize(input, { 
-    ALLOWED_TAGS: [], // Strip all HTML
-    ALLOWED_ATTR: []
-  });
+  // Remove HTML tags
+  let sanitized = input.replace(/<[^>]*>/g, '');
+  
+  // Remove potentially dangerous characters
+  sanitized = sanitized.replace(/[<>'"]/g, '');
+  
+  // Trim whitespace
+  return sanitized.trim();
 }
 
 /**
@@ -16,10 +18,8 @@ export function sanitizeInput(input: string): string {
  * Use for rich text content like descriptions
  */
 export function sanitizeHTML(html: string): string {
-  return DOMPurify.sanitize(html, {
-    ALLOWED_TAGS: ['b', 'i', 'em', 'strong', 'a', 'p', 'br'],
-    ALLOWED_ATTR: ['href', 'target', 'rel']
-  });
+  // For now, just strip all HTML - can enhance later if needed
+  return sanitizeInput(html);
 }
 
 /**
