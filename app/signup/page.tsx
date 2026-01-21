@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { createClient } from "@/lib/supabase/client";
 import Logo from "@/components/Logo";
 import OAuthButtons from "@/components/OAuthButtons";
+import { analytics } from "@/lib/analytics";
 
 export default function SignupPage() {
   const [email, setEmail] = useState("");
@@ -46,6 +47,7 @@ export default function SignupPage() {
 
       if (error) throw error;
 
+      analytics.trackSignup('email');
       setSuccess(true);
     } catch (err: any) {
       setError(err.message || "Failed to sign up");

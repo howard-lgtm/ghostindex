@@ -9,6 +9,7 @@
     "lint": "eslint",
     "seed:companies": "tsx scripts/seed-companies.ts",
     "test:connection": "tsx scripts/test-connection.ts",
+    "test:cron": "tsx scripts/test-cron-endpoints.ts",
     "check:mailgun": "tsx tools/check-mailgun-status.ts",
     "update:company-data": "tsx scripts/update-company-data.ts"
   },

@@ -5,6 +5,7 @@ import { createClient } from "@/lib/supabase/server";
 import { Button } from "@/components/ui/button";
 import Logo from "@/components/Logo";
 import { getCompanyLogoUrl, getFaviconUrl } from "@/lib/utils/company-logo";
+import CompanyPageTracker from "@/components/CompanyPageTracker";
 
 interface PageProps {
   params: Promise<{ domain: string }>;
@@ -66,6 +67,7 @@ export default async function CompanyDetailPage({ params }: PageProps) {
 
   return (
     <div className="min-h-screen" style={{ background: 'var(--bg)' }}>
+      <CompanyPageTracker domain={domain} />
       {/* Navigation */}
       <nav className="border-b" style={{ borderColor: 'var(--border)' }}>
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

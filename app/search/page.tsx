@@ -6,6 +6,7 @@ import { Search, TrendingDown, TrendingUp } from "lucide-react";
 import Logo from "@/components/Logo";
 import { Button } from "@/components/ui/button";
 import { getCompanyLogoUrl, getFaviconUrl } from "@/lib/utils/company-logo";
+import { analytics } from "@/lib/analytics";
 
 interface Company {
   id: string;
@@ -118,6 +119,8 @@ export default function SearchPage() {
       const result = await response.json();
       setResults(result.data || []);
       setError(null);
+      
+      analytics.trackSearch(query, result.data?.length || 0);
     } catch (error) {
       console.error("Search error:", error);
       setError('Search failed. Please try again.');

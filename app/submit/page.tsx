@@ -7,6 +7,7 @@ import { CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { createClient } from "@/lib/supabase/client";
 import Logo from "@/components/Logo";
+import { analytics } from "@/lib/analytics";
 
 export default function SubmitPage() {
   const [companyName, setCompanyName] = useState("");
@@ -99,6 +100,7 @@ export default function SubmitPage() {
         // Don't fail the submission if email fails
       }
 
+      analytics.trackReportSubmit(companyDomain.toLowerCase());
       setSuccess(true);
       setTimeout(() => {
         router.push("/dashboard");
