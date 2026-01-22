@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <footer className="border-t mt-auto" style={{ borderColor: 'var(--border)', background: 'var(--bg)' }}>
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
           {/* Brand */}
           <div className="col-span-1">
             <Link href="/" className="flex items-center gap-2 mb-4">
@@ -60,6 +60,30 @@ export default function Footer() {
               <li>
                 <a href="#" className="text-sm hover:text-action transition-colors" style={{ color: 'var(--text-dim)' }}>
                   FAQ
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Support */}
+          <div>
+            <h3 className="text-sm font-semibold mb-4" style={{ color: 'var(--text)' }}>
+              Support
+            </h3>
+            <ul className="space-y-3">
+              <li>
+                <a href="mailto:support@getghostindex.com" className="text-sm hover:text-action transition-colors" style={{ color: 'var(--text-dim)' }}>
+                  Contact Us
+                </a>
+              </li>
+              <li>
+                <a href="mailto:support@getghostindex.com?subject=Bug Report" className="text-sm hover:text-action transition-colors" style={{ color: 'var(--text-dim)' }}>
+                  Report a Bug
+                </a>
+              </li>
+              <li>
+                <a href="mailto:support@getghostindex.com?subject=Feature Request" className="text-sm hover:text-action transition-colors" style={{ color: 'var(--text-dim)' }}>
+                  Feature Request
                 </a>
               </li>
             </ul>

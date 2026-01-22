@@ -1,8 +1,8 @@
 # GhostIndex - Running Task List
 
-**Last Updated:** January 14, 2026 - 3:30 PM UTC+01:00  
-**Status:** Beta Invite Sent ✅  
-**Next Session:** January 15, 2026
+**Last Updated:** January 21, 2026 - 11:51 PM UTC+01:00  
+**Status:** Beta Active - Analytics Live ✅  
+**Next Session:** January 22, 2026
 
 ---
 
@@ -33,6 +33,69 @@
 - Company detail page not-found handling
 - Search results linking to company pages
 - All fixes pushed to production
+
+---
+
+## 🎉 Latest Accomplishments (January 21, 2026)
+
+### Major Milestones
+- ✅ Integrated Plausible Analytics (privacy-friendly tracking)
+- ✅ Expanded company database from 91 to 257 companies (+166)
+- ✅ Created automated cron endpoint testing suite
+- ✅ Verified 2/3 cron endpoints working (auto-ghost + score updates)
+- ✅ Fixed Plausible script loading issue (beforeInteractive strategy)
+- ✅ Added environment variable NEXT_PUBLIC_PLAUSIBLE_DOMAIN to Vercel
+- ✅ Seeded 191 new companies across 20+ industries
+
+### Analytics Implementation
+- Created `components/Analytics.tsx` - Plausible script loader
+- Created `components/CompanyPageTracker.tsx` - Page view tracking
+- Created `lib/analytics.ts` - Event tracking utilities
+- Tracking: searches, company views, report submissions, signups, logins
+- **Status:** Live on production at https://getghostindex.com
+
+### Company Database Expansion
+**New Industries Added:**
+- Tech Infrastructure (Cisco, Dell, HP, SAP, VMware, ServiceNow, Datadog, HashiCorp)
+- Fintech (Plaid, Brex, Ramp, Mercury, Chime, Affirm, Klarna)
+- Finance (Bank of America, Wells Fargo, Two Sigma, Jane Street, Hudson River Trading)
+- Consulting (PwC, EY, KPMG, Capgemini, Cognizant, Infosys, TCS, Wipro)
+- Gaming (Unity, Valve, Bungie, Ubisoft, Take-Two, Zynga)
+- Healthcare (UnitedHealth, CVS Health, Oscar Health, 23andMe, Illumina)
+- Automotive (Ford, GM, Rivian, Lucid Motors, Waymo, Cruise)
+- Aerospace (Boeing, Lockheed Martin, Northrop Grumman, Blue Origin)
+- Telecom (Verizon, AT&T, T-Mobile, Comcast)
+- Energy (ExxonMobil, Chevron, BP, Shell)
+- EdTech (Coursera, Udemy, Duolingo, Khan Academy, Chegg)
+- Cybersecurity (CrowdStrike, Palo Alto Networks, Fortinet, Zscaler, SentinelOne)
+- Media/Entertainment (Spotify, Hulu, Disney, Warner Bros, YouTube, Twitch)
+- E-commerce (Etsy, Wayfair, Chewy, Zillow, Redfin, Opendoor)
+- Food/Beverage (Coca-Cola, PepsiCo, Starbucks, McDonald's, Chipotle)
+
+### Cron Endpoint Testing
+- ✅ Auto-ghost detection: Working (3.4s response time)
+- ✅ Update scores: Working (58s, updated 203 companies)
+- ⚠️ Ghost jobs: Database function error (low priority)
+- ✅ Security: All endpoints properly reject unauthorized requests
+
+### Documentation Created
+1. `ANALYTICS_SETUP.md` - Complete Plausible setup guide
+2. `VERCEL_ENV_SETUP.md` - Environment variable instructions
+3. `CRON_ENDPOINT_TESTING.md` - Cron testing documentation
+4. `CRON_TEST_RESULTS.md` - Test results and recommendations
+5. `BETA_PROGRESS_UPDATE.md` - Comprehensive progress summary
+6. `SESSION_SUMMARY_JAN21.md` - Session summary
+
+### Code Changes
+- Modified `components/Analytics.tsx` - Changed to beforeInteractive strategy
+- Modified `app/layout.tsx` - Added Analytics component
+- Modified `app/search/page.tsx` - Added search event tracking
+- Modified `app/companies/[domain]/page.tsx` - Added company view tracking
+- Modified `app/submit/page.tsx` - Added report submission tracking
+- Modified `app/signup/page.tsx` - Added signup tracking
+- Modified `scripts/seed-companies.ts` - Added 166 new companies
+- Modified `scripts/test-cron-endpoints.ts` - Fixed dotenv loading
+- Modified `.env.example` - Added NEXT_PUBLIC_PLAUSIBLE_DOMAIN
 
 ---
 
@@ -404,7 +467,13 @@ When beta testers respond, ask:
 - `FEATURES_SECURITY_COMPLIANCE.md` - Technical docs
 - `MONETIZATION_STRATEGY.md` - Revenue model
 - `CRON_TESTING.md` - Cron endpoint testing guide
-- `SESSION_SUMMARY.md` - Previous session summary
+- `CRON_ENDPOINT_TESTING.md` - Cron testing documentation
+- `CRON_TEST_RESULTS.md` - Test results and recommendations
+- `ANALYTICS_SETUP.md` - Plausible Analytics setup guide
+- `VERCEL_ENV_SETUP.md` - Environment variable instructions
+- `BETA_PROGRESS_UPDATE.md` - Comprehensive progress summary
+- `SESSION_SUMMARY.md` - Previous session summary (Jan 14)
+- `SESSION_SUMMARY_JAN21.md` - Latest session summary (Jan 21)
 
 ### Code Locations
 - Company detail pages: `app/companies/[domain]/page.tsx`
@@ -412,9 +481,13 @@ When beta testers respond, ask:
 - Search API: `app/api/search/route.ts`
 - Cron endpoints: `app/api/cron/*/route.ts`
 - Mailgun webhook: `app/api/webhooks/mailgun/route.ts`
+- Analytics component: `components/Analytics.tsx`
+- Analytics utilities: `lib/analytics.ts`
+- Company page tracker: `components/CompanyPageTracker.tsx`
 
 ### Scripts
 - Seed companies: `scripts/seed-companies.ts`
+- Test cron endpoints: `scripts/test-cron-endpoints.ts`
 - Create demo reports: `scripts/create-demo-reports.ts`
 - Approve reports: `scripts/approve-reports.ts`
 - Check reports: `scripts/check-reports.ts`
@@ -433,6 +506,7 @@ When beta testers respond, ask:
 - [x] MAILGUN_API_KEY
 - [x] MAILGUN_WEBHOOK_SIGNING_KEY
 - [x] MAILGUN_DOMAIN
+- [x] NEXT_PUBLIC_PLAUSIBLE_DOMAIN
 
 ### Local Development
 - [x] All above variables in `.env.local`
@@ -440,19 +514,37 @@ When beta testers respond, ask:
 
 ---
 
-## 📞 Quick Reference
+## 📞 Quick Reference & Service URLs
 
-### URLs
-- **Production:** https://getghostindex.com
+### Production & Deployment
+- **Production Site:** https://getghostindex.com
 - **Vercel Dashboard:** https://vercel.com/howard-duffys-projects/ghostindex
-- **Supabase Dashboard:** https://supabase.com/dashboard/project/kovcfugvlwrxkoacgbtg
-- **Mailgun Dashboard:** https://app.eu.mailgun.com/dashboard
-- **GitHub Repo:** https://github.com/howard-lgtm/ghostindex
+- **GitHub Repository:** https://github.com/howard-lgtm/ghostindex
 
-### Key Metrics
-- **Companies:** 91
+### Database & Backend Services
+- **Supabase Dashboard:** https://supabase.com/dashboard/project/kovcfugvlwrxkoacgbtg
+- **Supabase URL:** https://kovcfugvlwrxkoacgbtg.supabase.co
+- **Upstash Redis:** https://console.upstash.com (rate limiting)
+
+### Email & Communication
+- **Mailgun Dashboard:** https://app.eu.mailgun.com/dashboard
+- **Mailgun Domain:** mg.getghostindex.com
+- **Verification Email:** verify+CODE@mg.getghostindex.com
+
+### Analytics & Monitoring
+- **Plausible Analytics:** https://plausible.io/getghostindex.com
+- **Plausible Account:** https://plausible.io/sites
+- **Vercel Logs:** https://vercel.com/howard-duffys-projects/ghostindex/logs
+
+### Development Tools
+- **Clearbit Logo API:** https://logo.clearbit.com/{domain}
+- **Google Favicon API:** https://www.google.com/s2/favicons?domain={domain}&sz={size}
+
+### Key Metrics (Updated Jan 21, 2026)
+- **Companies:** 257 (was 91)
 - **Reports:** 35 (24 verified)
-- **Users:** TBD (beta starting)
+- **Users:** Beta phase active
+- **Analytics:** Live tracking
 - **Uptime:** 99.9% target
 
 ---
@@ -460,36 +552,81 @@ When beta testers respond, ask:
 ## ✅ Tomorrow's Priorities (In Order)
 
 1. **Monitor beta feedback** (ongoing)
-2. **Fix any critical bugs reported** (as needed)
-3. **Test cron endpoints** (30 min)
-4. **Verify email verification flow** (1 hour)
-5. **Create social media accounts** (30 min)
-6. **Add more companies** (1-2 hours)
-7. **Set up analytics** (30 min)
-8. **Respond to beta testers** (ongoing)
+   - Check Plausible Analytics dashboard for user activity
+   - Review Vercel logs for errors
+   - Check email for beta tester responses
+
+2. **Verify email verification flow** (30 min)
+   - Submit test report
+   - Check verification email arrives
+   - Forward confirmation email to verify+CODE@mg.getghostindex.com
+   - Verify report marked as verified
+   - Check Ghost Index Score updates
+
+3. **Set up support infrastructure** (30 min)
+   - Create support@getghostindex.com
+   - Add to footer
+   - Set up email forwarding
+
+4. **Create social media accounts** (30 min)
+   - Twitter/X: @ghostindex
+   - LinkedIn Company Page
+   - Update LAUNCH_MATERIALS.md with links
+
+5. **Schedule cron jobs** (15 min)
+   - Set up Vercel Cron or external scheduler
+   - Schedule auto-ghost (daily 2 AM UTC)
+   - Schedule score updates (daily 3 AM UTC)
+   - Monitor first runs
+
+6. **Fix ghost jobs endpoint** (optional - low priority)
+   - Review detect_ghost_jobs database function
+   - Fix SQL error if time permits
 
 ---
 
-**Total Estimated Work:** 4-6 hours  
-**Focus:** Beta support, bug fixes, testing, social presence
+**Total Estimated Work:** ~2 hours  
+**Focus:** Email verification, support setup, social presence
+
+**Completed Today (Jan 21):**
+- ✅ Set up analytics (Plausible)
+- ✅ Test cron endpoints (2/3 working)
+- ✅ Add more companies (257 total)
 
 ---
 
-**Status:** Ready for tomorrow's session ✅  
-**Beta Invite:** Sent 🚀  
-**Next Review:** January 15, 2026
+**Status:** Analytics Live, Database Expanded, Ready for Final Beta Tasks ✅  
+**Beta Phase:** Active with 257 companies  
+**Next Session:** January 22, 2026
 
 ---
 
-## 🎉 Celebrate!
+## 🎉 Recent Progress Summary
 
-You've accomplished a LOT today:
-- Fixed critical bugs
-- Built major features
-- Created comprehensive documentation
-- Sent beta invite
-- Ready for users
+### January 21, 2026 Session
+- ✅ Plausible Analytics integrated and tracking
+- ✅ Company database expanded to 257 (2.8x increase)
+- ✅ Cron endpoints tested (2/3 working)
+- ✅ Comprehensive documentation created
+- ✅ Production deployment successful
 
-**Take a break. You've earned it!** 🎊
+### Remaining for Beta Completion
+- ⏳ Verify email verification flow (30 min)
+- ⏳ Set up support infrastructure (30 min)
+- ⏳ Create social media accounts (30 min)
+- ⏳ Schedule automated cron jobs (15 min)
 
-Tomorrow we'll monitor feedback and keep improving. Great work! 👏
+**Estimated Time to Complete Beta Setup:** ~2 hours
+
+---
+
+## 📊 Current System Status
+
+- **Production:** ✅ Live at https://getghostindex.com
+- **Analytics:** ✅ Tracking at https://plausible.io/getghostindex.com
+- **Database:** ✅ 257 companies, 35 reports (24 verified)
+- **Automation:** ✅ Auto-ghost and score updates working
+- **Security:** ✅ All endpoints protected
+- **Email:** ✅ Mailgun configured and working
+
+**Beta is in excellent shape and ready for growth!** �

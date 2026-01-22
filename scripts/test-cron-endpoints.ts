@@ -3,7 +3,10 @@
  * Tests all three cron jobs to verify they work correctly
  */
 
-import 'dotenv/config';
+import { config } from 'dotenv';
+
+// Load environment variables from .env.local
+config({ path: '.env.local' });
 
 const PRODUCTION_URL = 'https://getghostindex.com';
 const CRON_SECRET = process.env.CRON_SECRET;
