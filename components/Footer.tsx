@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <footer className="border-t mt-auto" style={{ borderColor: 'var(--border)', background: 'var(--bg)' }}>
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-6 gap-8">
           {/* Brand */}
           <div className="col-span-1">
             <Link href="/" className="flex items-center gap-2 mb-4">
@@ -84,6 +84,48 @@ export default function Footer() {
               <li>
                 <a href="mailto:support@getghostindex.com?subject=Feature Request" className="text-sm hover:text-action transition-colors" style={{ color: 'var(--text-dim)' }}>
                   Feature Request
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Connect */}
+          <div>
+            <h3 className="text-sm font-semibold mb-4" style={{ color: 'var(--text)' }}>
+              Connect
+            </h3>
+            <ul className="space-y-3">
+              <li>
+                <a 
+                  href="https://twitter.com/ghostindex" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm hover:text-action transition-colors" 
+                  style={{ color: 'var(--text-dim)' }}
+                >
+                  Twitter/X
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="https://linkedin.com/company/ghostindex" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm hover:text-action transition-colors" 
+                  style={{ color: 'var(--text-dim)' }}
+                >
+                  LinkedIn
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="https://github.com/howard-lgtm/ghostindex" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm hover:text-action transition-colors" 
+                  style={{ color: 'var(--text-dim)' }}
+                >
+                  GitHub
                 </a>
               </li>
             </ul>
