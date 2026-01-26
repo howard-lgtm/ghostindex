@@ -164,7 +164,47 @@ Our mission: Hold companies accountable for their hiring practices and help job 
 
 ## LinkedIn Post Templates
 
-### Launch Announcement
+### 🚀 LAUNCH POST (Primary)
+
+```
+I built something I wish existed when I was job hunting.
+
+You know the feeling. You spend hours perfecting your resume. You write a thoughtful cover letter. You research the company, prepare for interviews, follow up politely.
+
+And then... silence. 👻
+
+No rejection. No update. Nothing.
+
+75% of job applications go unanswered. That's not a bug in hiring — it's become the feature. And there's been zero accountability.
+
+Until now.
+
+Today I'm launching GhostIndex — a transparency platform that tracks how companies treat job candidates.
+
+Here's how it works:
+
+📝 Job seekers report their application experiences
+✅ Reports are verified via forwarded confirmation emails
+⏱️ After 30 days of silence, reports auto-flag as "ghosted"
+📊 Companies receive a Ghost Index Score (0-100)
+
+The result? Before you apply, you can see which companies respect candidates' time — and which ones don't.
+
+We've already indexed 200+ companies across tech, finance, and consulting.
+
+This isn't about shaming companies. It's about creating accountability. Good employers will stand out. And job seekers will finally have the information they need to make smarter decisions.
+
+The hiring process is broken. Let's fix it together.
+
+🔍 Search any company → getghostindex.com
+📝 Report your experience → getghostindex.com/submit
+
+#JobSearch #HiringTransparency #Recruiting #CareerAdvice #TechStartup #JobSeekers
+```
+
+---
+
+### Launch Announcement (Short Version)
 ```
 🚀 Introducing GhostIndex — Making Hiring Transparent
 
