@@ -5,6 +5,26 @@
 
 ---
 
+## The Story
+
+You've been there.
+
+You spent hours tailoring your resume. You wrote a personalized cover letter. You researched the company, prepared for the interview, followed up politely. 
+
+And then... nothing. 
+
+No rejection. No update. Just silence.
+
+You're not alone. Millions of job seekers experience this every day. They apply, they wait, they hope — and they get ghosted. Companies post jobs, collect applications, and vanish. Candidates are left wondering: *Did they even look at my resume? Was the job already filled? Did I do something wrong?*
+
+The truth is, ghosting has become the default in hiring. And there's been no way to hold companies accountable — until now.
+
+**GhostIndex was built to change that.**
+
+We believe job seekers deserve to know which companies respect their time and which ones don't. We believe transparency creates accountability. And we believe the hiring process can be better for everyone.
+
+---
+
 ## The Problem vs. The Solution
 
 ### ❌ The Problem
