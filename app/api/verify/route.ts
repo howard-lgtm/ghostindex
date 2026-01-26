@@ -13,6 +13,7 @@ export async function GET(request: Request) {
         `<!DOCTYPE html>
         <html>
           <head>
+            <meta charset="UTF-8">
             <title>Invalid Link - GhostIndex</title>
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <style>
@@ -49,6 +50,7 @@ export async function GET(request: Request) {
         `<!DOCTYPE html>
         <html>
           <head>
+            <meta charset="UTF-8">
             <title>Report Not Found - GhostIndex</title>
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <style>
@@ -77,6 +79,7 @@ export async function GET(request: Request) {
         `<!DOCTYPE html>
         <html>
           <head>
+            <meta charset="UTF-8">
             <title>Already Verified - GhostIndex</title>
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <style>
@@ -115,6 +118,7 @@ export async function GET(request: Request) {
         `<!DOCTYPE html>
         <html>
           <head>
+            <meta charset="UTF-8">
             <title>Verification Failed - GhostIndex</title>
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <style>
@@ -183,6 +187,7 @@ export async function GET(request: Request) {
       `<!DOCTYPE html>
       <html>
         <head>
+          <meta charset="UTF-8">
           <title>Report Verified! - GhostIndex</title>
           <meta name="viewport" content="width=device-width, initial-scale=1.0">
           <style>
@@ -228,6 +233,7 @@ export async function GET(request: Request) {
       `<!DOCTYPE html>
       <html>
         <head>
+          <meta charset="UTF-8">
           <title>Error - GhostIndex</title>
           <meta name="viewport" content="width=device-width, initial-scale=1.0">
           <style>
