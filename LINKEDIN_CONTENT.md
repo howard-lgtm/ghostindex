@@ -5,6 +5,43 @@
 
 ---
 
+## The Problem vs. The Solution
+
+### ❌ The Problem
+
+**Job seekers are being ghosted at unprecedented rates.**
+
+- 75% of job applications receive no response whatsoever
+- Candidates invest hours in applications, interviews, and assessments — only to be met with silence
+- There's no accountability for companies that ghost candidates
+- Job seekers have no way to know which companies communicate well before applying
+- The power imbalance in hiring leaves candidates frustrated and disrespected
+
+**The result:** Wasted time, damaged confidence, and a broken hiring system that treats candidates as disposable.
+
+---
+
+### ✅ The Solution: GhostIndex
+
+**We're bringing transparency to the hiring process.**
+
+GhostIndex tracks how companies treat job candidates and assigns each company a **Ghost Index Score (0-100)** based on verified candidate experiences.
+
+**How it works:**
+1. **Apply** — Submit your job application as normal
+2. **Report** — Tell us about your experience on GhostIndex
+3. **Verify** — Forward your application confirmation email to verify your report
+4. **Track** — After 30 days of silence, your report is automatically flagged as "ghosted"
+5. **Score** — The company's Ghost Index Score updates to reflect real candidate experiences
+
+**The impact:**
+- Job seekers can research companies before applying
+- Companies are held accountable for their hiring practices
+- Good employers stand out from the crowd
+- The hiring process becomes more respectful for everyone
+
+---
+
 ## About Section (Short)
 
 GhostIndex exposes company ghosting practices to help job seekers make informed decisions. We track and score companies based on verified candidate experiences, creating accountability in the hiring process.
