@@ -355,7 +355,7 @@ Add to `components/Footer.tsx` (already has Support section):
   <ul className="space-y-3">
     <li>
       <a 
-        href="https://twitter.com/ghostindex" 
+        href="https://twitter.com/GhostIndex_app" 
         target="_blank"
         rel="noopener noreferrer"
         className="text-sm hover:text-action transition-colors" 

@@ -263,7 +263,7 @@ We track how companies treat job candidates and assign each employer a **Ghost I
 
 **Website:** https://getghostindex.com  
 **Email:** howard@getghostindex.com  
-**Twitter:** https://twitter.com/ghostindex  
+**Twitter:** https://twitter.com/GhostIndex_app  
 **LinkedIn:** https://linkedin.com/company/ghostindex
 
 ---

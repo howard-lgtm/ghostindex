@@ -152,7 +152,7 @@ Our mission: Hold companies accountable for their hiring practices and help job 
 
 📝 **Report your experience:** https://getghostindex.com/submit
 
-🐦 **Follow us on Twitter:** https://twitter.com/ghostindex
+🐦 **Follow us on Twitter:** https://twitter.com/GhostIndex_app
 
 ---
 

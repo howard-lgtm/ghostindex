@@ -640,7 +640,7 @@ GhostIndex operates on a **freemium model** with multiple revenue streams design
 
 **Owned Channels:**
 - Website: https://getghostindex.com
-- Twitter: https://twitter.com/ghostindex
+- Twitter: https://twitter.com/GhostIndex_app
 - LinkedIn: https://linkedin.com/company/ghostindex
 
 **Launch Tactics:**
