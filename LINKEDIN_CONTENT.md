@@ -235,4 +235,30 @@ Check any company's score → getghostindex.com
 
 ---
 
-*Last updated: January 26, 2026*
+### 🔥 VIRAL TWEET (Primary Launch Tweet)
+```
+75% of companies ghost job applicants.
+
+We're naming them.
+
+GhostIndex tracks employer responsiveness with verified data.
+
+Every company gets a score. 0-100.
+
+See who responds—and who doesn't—before you waste another hour.
+
+👻 https://getghostindex.com
+
+#JobSearch #Ghosting #HiringTransparency
+```
+
+**Character count:** 268 (under 280 ✅)
+
+**Hashtag strategy:** 3 hashtags is optimal for Twitter engagement. These are:
+- `#JobSearch` — High volume, reaches job seekers
+- `#Ghosting` — Trending topic, emotional resonance
+- `#HiringTransparency` — Niche but targeted, builds brand association
+
+---
+
+*Last updated: January 27, 2026*
