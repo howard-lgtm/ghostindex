@@ -48,19 +48,19 @@ export default function Footer() {
             </h3>
             <ul className="space-y-3">
               <li>
-                <a href="#" className="text-sm hover:text-action transition-colors" style={{ color: 'var(--text-dim)' }}>
+                <Link href="/about" className="text-sm hover:text-action transition-colors" style={{ color: 'var(--text-dim)' }}>
                   About
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-sm hover:text-action transition-colors" style={{ color: 'var(--text-dim)' }}>
+                <Link href="/how-it-works" className="text-sm hover:text-action transition-colors" style={{ color: 'var(--text-dim)' }}>
                   How It Works
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-sm hover:text-action transition-colors" style={{ color: 'var(--text-dim)' }}>
+                <Link href="/faq" className="text-sm hover:text-action transition-colors" style={{ color: 'var(--text-dim)' }}>
                   FAQ
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
