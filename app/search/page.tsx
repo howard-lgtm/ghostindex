@@ -14,7 +14,9 @@ interface Company {
   domain: string;
   logo: string | null;
   ghost_index_score: number | null;
-  stock_symbol: string | null;
+  stock_ticker: string | null;
+  stock_exchange: string | null;
+  is_public: boolean;
   company_type: 'public' | 'private' | 'startup' | 'nonprofit' | null;
   industry: string | null;
   employee_count_range: string | null;
@@ -267,9 +269,9 @@ export default function SearchPage() {
                               <span className="font-medium" style={{color: 'var(--text)'}}>
                                 {company.name}
                               </span>
-                              {company.stock_symbol && (
-                                <span className="data-mono text-xs" style={{color: 'var(--info)'}}>
-                                  ({company.stock_symbol})
+                              {company.stock_ticker && (
+                                <span className="data-mono text-xs font-semibold" style={{color: 'var(--action)'}}>
+                                  ${company.stock_ticker}
                                 </span>
                               )}
                             </div>
@@ -356,8 +358,8 @@ export default function SearchPage() {
                                   }}
                                 />
                                 <span className="font-medium" style={{color: 'var(--text)'}}>{company.name}</span>
-                                {company.stock_symbol && (
-                                  <span className="data-mono text-xs" style={{color: 'var(--info)'}}>({company.stock_symbol})</span>
+                                {company.stock_ticker && (
+                                  <span className="data-mono text-xs font-semibold" style={{color: 'var(--action)'}}>${company.stock_ticker}</span>
                                 )}
                               </div>
                               <span className="text-muted data-mono text-xs">{company.domain}</span>

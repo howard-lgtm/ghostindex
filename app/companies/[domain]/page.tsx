@@ -132,9 +132,9 @@ export default async function CompanyDetailPage({ params }: PageProps) {
                     {company.employee_count_range}
                   </span>
                 )}
-                {company.stock_symbol && (
-                  <span className="inline-flex items-center rounded-full px-3 py-1 text-sm font-medium data-mono" style={{ background: 'var(--panel2)', color: 'var(--text)' }}>
-                    {company.stock_symbol}
+                {company.stock_ticker && (
+                  <span className="inline-flex items-center rounded-full px-3 py-1 text-sm font-medium data-mono" style={{ background: 'var(--action)', color: 'var(--bg)' }}>
+                    ${company.stock_ticker} {company.stock_exchange && `• ${company.stock_exchange}`}
                   </span>
                 )}
               </div>
