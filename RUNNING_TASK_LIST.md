@@ -629,4 +629,34 @@ When beta testers respond, ask:
 - **Security:** ✅ All endpoints protected
 - **Email:** ✅ Mailgun configured and working
 
-**Beta is in excellent shape and ready for growth!** �
+**Beta is in excellent shape and ready for growth!** 🚀
+
+---
+
+## 🔮 Future Architecture Considerations
+
+### Authentication & Security Scaling (Discussion: Jan 29, 2026)
+
+**Current Stack:**
+- Supabase Auth (GoTrue-based, OIDC-compatible)
+- Social Login: Google OAuth, LinkedIn OIDC
+- Session Management: Supabase SSR cookies (JWT)
+- API Auth: CRON_SECRET shared bearer token
+
+**Assessment:** Current stack is solid for B2C scale.
+
+**When to Consider AWS Cognito / Auth0 / Okta:**
+| Trigger | Reason |
+|---------|--------|
+| Enterprise SSO demand | SAML federation (Supabase doesn't support natively) |
+| API partner integrations | OAuth client_credentials flow for B2B |
+| SOC2/HIPAA compliance | Richer audit trails needed |
+| Multi-tenant B2B | Native tenant scoping |
+| Supabase pricing at scale | Self-managed may be cheaper |
+
+**Potential Improvements (when needed):**
+- Replace shared secrets with short-lived JWTs for API auth
+- Add OAuth client credentials for B2B integrations
+- Implement API key management for partners
+
+**Status:** ⏸️ Revisit after enterprise investor discussions

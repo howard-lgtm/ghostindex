@@ -254,6 +254,182 @@ const topCompanies = [
   { name: 'Fortinet', domain: 'fortinet.com', logo: 'https://logo.clearbit.com/fortinet.com' },
   { name: 'Zscaler', domain: 'zscaler.com', logo: 'https://logo.clearbit.com/zscaler.com' },
   { name: 'SentinelOne', domain: 'sentinelone.com', logo: 'https://logo.clearbit.com/sentinelone.com' },
+  
+  // ========== INTERNATIONAL COMPANIES ==========
+  
+  // UK & Ireland
+  { name: 'Revolut', domain: 'revolut.com', logo: 'https://logo.clearbit.com/revolut.com' },
+  { name: 'Wise', domain: 'wise.com', logo: 'https://logo.clearbit.com/wise.com' },
+  { name: 'Monzo', domain: 'monzo.com', logo: 'https://logo.clearbit.com/monzo.com' },
+  { name: 'Starling Bank', domain: 'starlingbank.com', logo: 'https://logo.clearbit.com/starlingbank.com' },
+  { name: 'Deliveroo', domain: 'deliveroo.com', logo: 'https://logo.clearbit.com/deliveroo.com' },
+  { name: 'Arm', domain: 'arm.com', logo: 'https://logo.clearbit.com/arm.com' },
+  { name: 'Darktrace', domain: 'darktrace.com', logo: 'https://logo.clearbit.com/darktrace.com' },
+  { name: 'Checkout.com', domain: 'checkout.com', logo: 'https://logo.clearbit.com/checkout.com' },
+  { name: 'Improbable', domain: 'improbable.io', logo: 'https://logo.clearbit.com/improbable.io' },
+  { name: 'Graphcore', domain: 'graphcore.ai', logo: 'https://logo.clearbit.com/graphcore.ai' },
+  { name: 'Ocado', domain: 'ocado.com', logo: 'https://logo.clearbit.com/ocado.com' },
+  { name: 'Sky', domain: 'sky.com', logo: 'https://logo.clearbit.com/sky.com' },
+  { name: 'BBC', domain: 'bbc.co.uk', logo: 'https://logo.clearbit.com/bbc.co.uk' },
+  { name: 'Vodafone', domain: 'vodafone.com', logo: 'https://logo.clearbit.com/vodafone.com' },
+  { name: 'HSBC', domain: 'hsbc.com', logo: 'https://logo.clearbit.com/hsbc.com' },
+  { name: 'Barclays', domain: 'barclays.com', logo: 'https://logo.clearbit.com/barclays.com' },
+  { name: 'Lloyds Banking Group', domain: 'lloydsbankinggroup.com', logo: 'https://logo.clearbit.com/lloydsbankinggroup.com' },
+  { name: 'NatWest', domain: 'natwestgroup.com', logo: 'https://logo.clearbit.com/natwestgroup.com' },
+  { name: 'Stripe Ireland', domain: 'stripe.com', logo: 'https://logo.clearbit.com/stripe.com' },
+  { name: 'Intercom', domain: 'intercom.com', logo: 'https://logo.clearbit.com/intercom.com' },
+  
+  // Germany
+  { name: 'Delivery Hero', domain: 'deliveryhero.com', logo: 'https://logo.clearbit.com/deliveryhero.com' },
+  { name: 'N26', domain: 'n26.com', logo: 'https://logo.clearbit.com/n26.com' },
+  { name: 'Zalando', domain: 'zalando.com', logo: 'https://logo.clearbit.com/zalando.com' },
+  { name: 'TeamViewer', domain: 'teamviewer.com', logo: 'https://logo.clearbit.com/teamviewer.com' },
+  { name: 'HelloFresh', domain: 'hellofresh.com', logo: 'https://logo.clearbit.com/hellofresh.com' },
+  { name: 'Celonis', domain: 'celonis.com', logo: 'https://logo.clearbit.com/celonis.com' },
+  { name: 'Personio', domain: 'personio.com', logo: 'https://logo.clearbit.com/personio.com' },
+  { name: 'FlixBus', domain: 'flixbus.com', logo: 'https://logo.clearbit.com/flixbus.com' },
+  { name: 'Auto1 Group', domain: 'auto1-group.com', logo: 'https://logo.clearbit.com/auto1-group.com' },
+  { name: 'Trade Republic', domain: 'traderepublic.com', logo: 'https://logo.clearbit.com/traderepublic.com' },
+  { name: 'Siemens', domain: 'siemens.com', logo: 'https://logo.clearbit.com/siemens.com' },
+  { name: 'Deutsche Bank', domain: 'db.com', logo: 'https://logo.clearbit.com/db.com' },
+  { name: 'Allianz', domain: 'allianz.com', logo: 'https://logo.clearbit.com/allianz.com' },
+  { name: 'BMW', domain: 'bmw.com', logo: 'https://logo.clearbit.com/bmw.com' },
+  { name: 'Mercedes-Benz', domain: 'mercedes-benz.com', logo: 'https://logo.clearbit.com/mercedes-benz.com' },
+  { name: 'Volkswagen', domain: 'volkswagen.com', logo: 'https://logo.clearbit.com/volkswagen.com' },
+  { name: 'Bosch', domain: 'bosch.com', logo: 'https://logo.clearbit.com/bosch.com' },
+  
+  // Netherlands
+  { name: 'Booking.com', domain: 'booking.com', logo: 'https://logo.clearbit.com/booking.com' },
+  { name: 'Adyen', domain: 'adyen.com', logo: 'https://logo.clearbit.com/adyen.com' },
+  { name: 'ASML', domain: 'asml.com', logo: 'https://logo.clearbit.com/asml.com' },
+  { name: 'Picnic', domain: 'picnic.app', logo: 'https://logo.clearbit.com/picnic.app' },
+  { name: 'Mollie', domain: 'mollie.com', logo: 'https://logo.clearbit.com/mollie.com' },
+  { name: 'MessageBird', domain: 'messagebird.com', logo: 'https://logo.clearbit.com/messagebird.com' },
+  { name: 'TomTom', domain: 'tomtom.com', logo: 'https://logo.clearbit.com/tomtom.com' },
+  { name: 'Philips', domain: 'philips.com', logo: 'https://logo.clearbit.com/philips.com' },
+  { name: 'ING', domain: 'ing.com', logo: 'https://logo.clearbit.com/ing.com' },
+  
+  // Nordics (Sweden, Finland, Norway, Denmark)
+  { name: 'Bolt', domain: 'bolt.eu', logo: 'https://logo.clearbit.com/bolt.eu' },
+  { name: 'Supercell', domain: 'supercell.com', logo: 'https://logo.clearbit.com/supercell.com' },
+  { name: 'Rovio', domain: 'rovio.com', logo: 'https://logo.clearbit.com/rovio.com' },
+  { name: 'Wolt', domain: 'wolt.com', logo: 'https://logo.clearbit.com/wolt.com' },
+  { name: 'Nordea', domain: 'nordea.com', logo: 'https://logo.clearbit.com/nordea.com' },
+  { name: 'Ericsson', domain: 'ericsson.com', logo: 'https://logo.clearbit.com/ericsson.com' },
+  { name: 'Nokia', domain: 'nokia.com', logo: 'https://logo.clearbit.com/nokia.com' },
+  { name: 'IKEA', domain: 'ikea.com', logo: 'https://logo.clearbit.com/ikea.com' },
+  { name: 'H&M', domain: 'hm.com', logo: 'https://logo.clearbit.com/hm.com' },
+  { name: 'Volvo', domain: 'volvo.com', logo: 'https://logo.clearbit.com/volvo.com' },
+  { name: 'Polestar', domain: 'polestar.com', logo: 'https://logo.clearbit.com/polestar.com' },
+  { name: 'Trustpilot', domain: 'trustpilot.com', logo: 'https://logo.clearbit.com/trustpilot.com' },
+  { name: 'Kahoot', domain: 'kahoot.com', logo: 'https://logo.clearbit.com/kahoot.com' },
+  
+  // France
+  { name: 'BlaBlaCar', domain: 'blablacar.com', logo: 'https://logo.clearbit.com/blablacar.com' },
+  { name: 'Doctolib', domain: 'doctolib.fr', logo: 'https://logo.clearbit.com/doctolib.fr' },
+  { name: 'Dassault Systèmes', domain: '3ds.com', logo: 'https://logo.clearbit.com/3ds.com' },
+  { name: 'Criteo', domain: 'criteo.com', logo: 'https://logo.clearbit.com/criteo.com' },
+  { name: 'OVHcloud', domain: 'ovhcloud.com', logo: 'https://logo.clearbit.com/ovhcloud.com' },
+  { name: 'Dataiku', domain: 'dataiku.com', logo: 'https://logo.clearbit.com/dataiku.com' },
+  { name: 'Mirakl', domain: 'mirakl.com', logo: 'https://logo.clearbit.com/mirakl.com' },
+  { name: 'ContentSquare', domain: 'contentsquare.com', logo: 'https://logo.clearbit.com/contentsquare.com' },
+  { name: 'Thales', domain: 'thalesgroup.com', logo: 'https://logo.clearbit.com/thalesgroup.com' },
+  { name: 'BNP Paribas', domain: 'bnpparibas.com', logo: 'https://logo.clearbit.com/bnpparibas.com' },
+  { name: 'Société Générale', domain: 'societegenerale.com', logo: 'https://logo.clearbit.com/societegenerale.com' },
+  
+  // Switzerland
+  { name: 'UBS', domain: 'ubs.com', logo: 'https://logo.clearbit.com/ubs.com' },
+  { name: 'Credit Suisse', domain: 'credit-suisse.com', logo: 'https://logo.clearbit.com/credit-suisse.com' },
+  { name: 'Nestle', domain: 'nestle.com', logo: 'https://logo.clearbit.com/nestle.com' },
+  { name: 'Novartis', domain: 'novartis.com', logo: 'https://logo.clearbit.com/novartis.com' },
+  { name: 'Roche', domain: 'roche.com', logo: 'https://logo.clearbit.com/roche.com' },
+  { name: 'ABB', domain: 'abb.com', logo: 'https://logo.clearbit.com/abb.com' },
+  
+  // Spain
+  { name: 'Cabify', domain: 'cabify.com', logo: 'https://logo.clearbit.com/cabify.com' },
+  { name: 'Glovo', domain: 'glovoapp.com', logo: 'https://logo.clearbit.com/glovoapp.com' },
+  { name: 'Wallbox', domain: 'wallbox.com', logo: 'https://logo.clearbit.com/wallbox.com' },
+  { name: 'Santander', domain: 'santander.com', logo: 'https://logo.clearbit.com/santander.com' },
+  
+  // Australia
+  { name: 'Afterpay', domain: 'afterpay.com', logo: 'https://logo.clearbit.com/afterpay.com' },
+  { name: 'REA Group', domain: 'rea-group.com', logo: 'https://logo.clearbit.com/rea-group.com' },
+  { name: 'Xero', domain: 'xero.com', logo: 'https://logo.clearbit.com/xero.com' },
+  { name: 'SafetyCulture', domain: 'safetyculture.com', logo: 'https://logo.clearbit.com/safetyculture.com' },
+  { name: 'Culture Amp', domain: 'cultureamp.com', logo: 'https://logo.clearbit.com/cultureamp.com' },
+  { name: 'Airwallex', domain: 'airwallex.com', logo: 'https://logo.clearbit.com/airwallex.com' },
+  { name: 'Immutable', domain: 'immutable.com', logo: 'https://logo.clearbit.com/immutable.com' },
+  { name: 'Telstra', domain: 'telstra.com.au', logo: 'https://logo.clearbit.com/telstra.com.au' },
+  { name: 'Commonwealth Bank', domain: 'commbank.com.au', logo: 'https://logo.clearbit.com/commbank.com.au' },
+  
+  // Singapore & Southeast Asia
+  { name: 'Grab', domain: 'grab.com', logo: 'https://logo.clearbit.com/grab.com' },
+  { name: 'Sea Group', domain: 'sea.com', logo: 'https://logo.clearbit.com/sea.com' },
+  { name: 'Shopee', domain: 'shopee.com', logo: 'https://logo.clearbit.com/shopee.com' },
+  { name: 'Razer', domain: 'razer.com', logo: 'https://logo.clearbit.com/razer.com' },
+  { name: 'Lazada', domain: 'lazada.com', logo: 'https://logo.clearbit.com/lazada.com' },
+  { name: 'GoTo', domain: 'gotocompany.com', logo: 'https://logo.clearbit.com/gotocompany.com' },
+  { name: 'Carousell', domain: 'carousell.com', logo: 'https://logo.clearbit.com/carousell.com' },
+  { name: 'Ninja Van', domain: 'ninjavan.co', logo: 'https://logo.clearbit.com/ninjavan.co' },
+  { name: 'DBS Bank', domain: 'dbs.com', logo: 'https://logo.clearbit.com/dbs.com' },
+  
+  // Japan
+  { name: 'Sony', domain: 'sony.com', logo: 'https://logo.clearbit.com/sony.com' },
+  { name: 'Toyota', domain: 'toyota.com', logo: 'https://logo.clearbit.com/toyota.com' },
+  { name: 'Honda', domain: 'honda.com', logo: 'https://logo.clearbit.com/honda.com' },
+  { name: 'Nintendo', domain: 'nintendo.com', logo: 'https://logo.clearbit.com/nintendo.com' },
+  { name: 'SoftBank', domain: 'softbank.jp', logo: 'https://logo.clearbit.com/softbank.jp' },
+  { name: 'Rakuten', domain: 'rakuten.com', logo: 'https://logo.clearbit.com/rakuten.com' },
+  { name: 'Mercari', domain: 'mercari.com', logo: 'https://logo.clearbit.com/mercari.com' },
+  { name: 'LINE', domain: 'linecorp.com', logo: 'https://logo.clearbit.com/linecorp.com' },
+  { name: 'Hitachi', domain: 'hitachi.com', logo: 'https://logo.clearbit.com/hitachi.com' },
+  { name: 'Panasonic', domain: 'panasonic.com', logo: 'https://logo.clearbit.com/panasonic.com' },
+  
+  // South Korea
+  { name: 'Samsung', domain: 'samsung.com', logo: 'https://logo.clearbit.com/samsung.com' },
+  { name: 'LG', domain: 'lg.com', logo: 'https://logo.clearbit.com/lg.com' },
+  { name: 'Hyundai', domain: 'hyundai.com', logo: 'https://logo.clearbit.com/hyundai.com' },
+  { name: 'SK Hynix', domain: 'skhynix.com', logo: 'https://logo.clearbit.com/skhynix.com' },
+  { name: 'Kakao', domain: 'kakaocorp.com', logo: 'https://logo.clearbit.com/kakaocorp.com' },
+  { name: 'Naver', domain: 'navercorp.com', logo: 'https://logo.clearbit.com/navercorp.com' },
+  { name: 'Coupang', domain: 'coupang.com', logo: 'https://logo.clearbit.com/coupang.com' },
+  
+  // China (Global operations)
+  { name: 'ByteDance', domain: 'bytedance.com', logo: 'https://logo.clearbit.com/bytedance.com' },
+  { name: 'Alibaba', domain: 'alibaba.com', logo: 'https://logo.clearbit.com/alibaba.com' },
+  { name: 'Tencent', domain: 'tencent.com', logo: 'https://logo.clearbit.com/tencent.com' },
+  { name: 'Huawei', domain: 'huawei.com', logo: 'https://logo.clearbit.com/huawei.com' },
+  { name: 'Xiaomi', domain: 'mi.com', logo: 'https://logo.clearbit.com/mi.com' },
+  { name: 'DJI', domain: 'dji.com', logo: 'https://logo.clearbit.com/dji.com' },
+  { name: 'Lenovo', domain: 'lenovo.com', logo: 'https://logo.clearbit.com/lenovo.com' },
+  { name: 'BYD', domain: 'byd.com', logo: 'https://logo.clearbit.com/byd.com' },
+  
+  // Israel
+  { name: 'Wix', domain: 'wix.com', logo: 'https://logo.clearbit.com/wix.com' },
+  { name: 'Monday.com', domain: 'monday.com', logo: 'https://logo.clearbit.com/monday.com' },
+  { name: 'Fiverr', domain: 'fiverr.com', logo: 'https://logo.clearbit.com/fiverr.com' },
+  { name: 'Check Point', domain: 'checkpoint.com', logo: 'https://logo.clearbit.com/checkpoint.com' },
+  { name: 'Waze', domain: 'waze.com', logo: 'https://logo.clearbit.com/waze.com' },
+  { name: 'IronSource', domain: 'ironsrc.com', logo: 'https://logo.clearbit.com/ironsrc.com' },
+  { name: 'AppsFlyer', domain: 'appsflyer.com', logo: 'https://logo.clearbit.com/appsflyer.com' },
+  
+  // Canada
+  { name: 'Hootsuite', domain: 'hootsuite.com', logo: 'https://logo.clearbit.com/hootsuite.com' },
+  { name: 'Clio', domain: 'clio.com', logo: 'https://logo.clearbit.com/clio.com' },
+  { name: 'Lightspeed', domain: 'lightspeedhq.com', logo: 'https://logo.clearbit.com/lightspeedhq.com' },
+  { name: 'Wealthsimple', domain: 'wealthsimple.com', logo: 'https://logo.clearbit.com/wealthsimple.com' },
+  { name: 'Coveo', domain: 'coveo.com', logo: 'https://logo.clearbit.com/coveo.com' },
+  { name: 'Dapper Labs', domain: 'dapperlabs.com', logo: 'https://logo.clearbit.com/dapperlabs.com' },
+  { name: 'RBC', domain: 'rbc.com', logo: 'https://logo.clearbit.com/rbc.com' },
+  { name: 'TD Bank', domain: 'td.com', logo: 'https://logo.clearbit.com/td.com' },
+  
+  // Latin America
+  { name: 'Mercado Libre', domain: 'mercadolibre.com', logo: 'https://logo.clearbit.com/mercadolibre.com' },
+  { name: 'Nubank', domain: 'nubank.com.br', logo: 'https://logo.clearbit.com/nubank.com.br' },
+  { name: 'Rappi', domain: 'rappi.com', logo: 'https://logo.clearbit.com/rappi.com' },
+  { name: 'iFood', domain: 'ifood.com.br', logo: 'https://logo.clearbit.com/ifood.com.br' },
+  { name: 'Kavak', domain: 'kavak.com', logo: 'https://logo.clearbit.com/kavak.com' },
+  { name: 'Clip', domain: 'clip.mx', logo: 'https://logo.clearbit.com/clip.mx' },
 ];
 
 async function seedCompanies() {

@@ -4,7 +4,7 @@ import { ArrowLeft, Building2, TrendingDown, TrendingUp, Users, Calendar, CheckC
 import { createClient } from "@/lib/supabase/server";
 import { Button } from "@/components/ui/button";
 import Logo from "@/components/Logo";
-import { getCompanyLogoUrl, getFaviconUrl } from "@/lib/utils/company-logo";
+import CompanyLogo from "@/components/CompanyLogo";
 import CompanyPageTracker from "@/components/CompanyPageTracker";
 
 interface PageProps {
@@ -98,14 +98,11 @@ export default async function CompanyDetailPage({ params }: PageProps) {
         {/* Company Header */}
         <div className="rounded-xl border p-8 mb-8" style={{ background: 'var(--panel)', borderColor: 'var(--border)' }}>
           <div className="flex items-start gap-6">
-            <img
-              src={getCompanyLogoUrl(company.domain)}
-              alt={company.name}
-              className="h-24 w-24 object-contain rounded-lg"
-              onError={(e) => {
-                const img = e.target as HTMLImageElement;
-                img.src = getFaviconUrl(company.domain, 96);
-              }}
+            <CompanyLogo
+              domain={company.domain}
+              name={company.name}
+              size={96}
+              className="rounded-lg"
             />
             <div className="flex-1">
               <h1 className="text-4xl font-bold mb-2" style={{ color: 'var(--text)' }}>
