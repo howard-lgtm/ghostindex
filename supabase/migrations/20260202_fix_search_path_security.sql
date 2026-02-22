@@ -248,9 +248,11 @@ SECURITY DEFINER
 SET search_path = ''
 AS $$
 BEGIN
-  -- Update days_active for all job postings
+  -- Update days_active for all job postings that have both dates
   UPDATE public.job_postings
-  SET days_active = EXTRACT(DAY FROM (last_seen_date - first_seen_date))::INTEGER;
+  SET days_active = EXTRACT(DAY FROM (last_seen_date - first_seen_date))::INTEGER
+  WHERE first_seen_date IS NOT NULL 
+    AND last_seen_date IS NOT NULL;
   
   -- Flag ghost jobs
   UPDATE public.job_postings jp
