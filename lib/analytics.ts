@@ -1,11 +1,14 @@
 /**
  * Analytics tracking utilities
- * Uses Plausible Analytics for privacy-friendly tracking
+ * Supports multiple analytics providers: Vercel Analytics and Umami
  */
 
 declare global {
   interface Window {
-    plausible?: (event: string, options?: { props: Record<string, string | number | boolean> }) => void;
+    umami?: {
+      track: (event: string, data?: Record<string, string | number | boolean>) => void;
+    };
+    va?: (event: string, data?: Record<string, string | number | boolean>) => void;
   }
 }
 
@@ -13,8 +16,16 @@ export const trackEvent = (
   eventName: string,
   props?: Record<string, string | number | boolean>
 ) => {
-  if (typeof window !== 'undefined' && window.plausible) {
-    window.plausible(eventName, props ? { props } : undefined);
+  if (typeof window === 'undefined') return;
+
+  // Track with Vercel Analytics
+  if (window.va) {
+    window.va(eventName, props);
+  }
+
+  // Track with Umami
+  if (window.umami) {
+    window.umami.track(eventName, props);
   }
 };
 
