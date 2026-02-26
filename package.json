@@ -14,6 +14,7 @@
     "update:company-data": "tsx scripts/update-company-data.ts"
   },
   "dependencies": {
+    "@sentry/nextjs": "^10.40.0",
     "@supabase/ssr": "^0.8.0",
     "@upstash/ratelimit": "^2.0.4",
     "@upstash/redis": "^1.34.3",
