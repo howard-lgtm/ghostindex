@@ -11,7 +11,8 @@
     "test:connection": "tsx scripts/test-connection.ts",
     "test:cron": "tsx scripts/test-cron-endpoints.ts",
     "check:mailgun": "tsx tools/check-mailgun-status.ts",
-    "update:company-data": "tsx scripts/update-company-data.ts"
+    "update:company-data": "tsx scripts/update-company-data.ts",
+    "rotate:cron-secret": "tsx scripts/rotate-cron-secret.ts"
   },
   "dependencies": {
     "@sentry/nextjs": "^10.40.0",
